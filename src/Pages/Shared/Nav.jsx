@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 // import { useFirebaseAuth } from '../Auth/AuthProvider';
 import { FaHome, FaUser, FaUserPlus, FaSignInAlt } from "react-icons/fa";
@@ -9,13 +9,20 @@ import { VscOpenPreview } from "react-icons/vsc";
 // import { useFirebaseAuth } from "../hooks/useAuth";
 import { RiUserReceivedLine } from "react-icons/ri";
 import { FaRegSave } from "react-icons/fa";
-import logo from '../../assets/logo.png'
+import logo from "../../assets/logo.png";
+import AuthContext from "../../Context/AuthContext";
+import { CgLogIn } from "react-icons/cg";
+import { TbLogout2 } from "react-icons/tb";
+import { SiSecurityscorecard } from "react-icons/si";
+import Swal from "sweetalert2";
 
 const Nav = () => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [activeLink, setActiveLink] = React.useState(location.pathname);
   //   const { user, logOut, loading } = useFirebaseAuth();
+  const { user, loading,logOutUser } = useContext(AuthContext);
+  console.log(user);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,6 +45,26 @@ const Nav = () => {
     "/ManageMyPostRequest",
   ].includes(activeLink);
 
+
+
+  const handleLogout = () => {
+    logOutUser()
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Logged out successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        toast.error("Logout failed. Please try again.", {
+          position: "top-center",
+        });
+      });
+  };
+
   return (
     <nav className="font_header  backdrop-blur-md fixed w-full shadow-lg top-0 z-50 ">
       <div className="w-10/12 mx-auto px-2 sm:px-2 lg:px-2">
@@ -50,7 +77,7 @@ const Nav = () => {
                 src={logo}
                 alt="Logo"
               />
-              <span className="text-3xl sm:text-3xl md:text-3xl lg:text-3xl text-md font-bold">
+              <span className="text-3xl sm:text-3xl md:text-3xl lg:text-3xl text-md font-bold text bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent">
                 Dental Care
               </span>
             </Link>
@@ -73,15 +100,11 @@ const Nav = () => {
 
             <Link
               to="/allBlog"
-              className={getLinkStyle("/allBBlog")}
+              className={getLinkStyle("/allBlog")}
               onClick={() => setActiveLink("/allBlog")}
             >
               <VscOpenPreview className="lg:inline-block mr-1" /> All Blog
             </Link>
-
-         
-
-           
 
             <div
               className={`dropdown dropdown-bottom ${
@@ -102,14 +125,12 @@ const Nav = () => {
               </div>
               <ul
                 tabIndex={0}
-                className={`dropdown-content       rounded-box z-[1] w-52 p-2 shadow`}
+                className={`dropdown-content       rounded-box z-[1] w-52 p-5 space-y-3 shadow`}
               >
                 <li className="my-1 ">
                   <Link
                     to="/addBlog"
-                    className={`${getLinkStyle(
-                      "/addBlog"
-                    )} rounded-none `}
+                    className={`${getLinkStyle("/addBlog")} rounded-none `}
                   >
                     Add Blog
                   </Link>
@@ -117,11 +138,9 @@ const Nav = () => {
                 <li className="my-1">
                   <Link
                     to="/myPostedBlog"
-                    className={`${getLinkStyle(
-                      "/myPostedBlog"
-                    )} rounded-none`}
+                    className={`${getLinkStyle("/myPostedBlog")} rounded-none`}
                   >
-                     My Posted Blog
+                    My Posted Blog
                   </Link>
                 </li>
                 {/* <li className="my-1">
@@ -146,6 +165,36 @@ const Nav = () => {
             </div>
           </div>
           {/* center links end */}
+
+          {/*  */}
+
+          <div className="md:flex hidden items-center space-x-4">
+            {user ? (
+              <div className="flex items-center gap-3 space-x-2">
+                <img
+                  src={user.photoURL || "/default-avatar.png"}
+                  alt="User Avatar"
+                  className="w-10 h-10 rounded-full"
+                />
+                <button
+                  onClick={handleLogout}
+                  className="text-sm text-[#2a66eb] font-bold flex items-center gap-1 border hover:text-white border-[#0077b6] p-3 rounded-md hover:bg-[#2a66eb]"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center space-x-4">
+                <Link to="/login" className={getLinkStyle("/login")}>
+                  Login
+                </Link>
+                <Link to="/signUp" className={getLinkStyle("/signUp")}>
+                  Sign Up
+                </Link>
+              </div>
+            )}
+          </div>
+          {/*  */}
 
           <div className="md:hidden flex items-center ml-2">
             <button
@@ -228,9 +277,9 @@ const Nav = () => {
               setIsMobileMenuOpen(false);
             }}
           >
-            <FaUser className="inline-block mr-1" />  My Posted Blog
+            <FaUser className="inline-block mr-1" /> My Posted Blog
           </Link>
-{/* 
+          {/* 
           <Link
             to="/received-request"
             className={`block ${getLinkStyle("/received-request")}`}
@@ -252,10 +301,10 @@ const Nav = () => {
             }}
           >
             <FaRegSave className="inline-block mr-1" />
-            My Wishlist 
+            My Wishlist
           </Link>
 
-          {/* {user && (
+          {user && (
             <>
               <Link
                 to="/my-profile"
@@ -268,20 +317,26 @@ const Nav = () => {
                 <FaUser className="inline-block mr-1" /> Profile
               </Link>
             </>
-          )} */}
+          )}
 
-          {/*          
           {user && (
-            <button
-              onClick={handleLogout}
-              className="bg-[#151515]  px-6 py-2 rounded-3xl text-white font-semibold transition-transform hover:scale-105 shadow-2xl  hover:bg-[#41b3a2] "
-            >
-              Logout
-            </button>
-          )} */}
-
+            <div className="flex items-center gap-3 space-x-2">
+              <img
+                src={user.photoURL || "/default-avatar.png"}
+                alt="User Avatar"
+                className="w-10 h-10 rounded-full"
+              />
+              <button
+                onClick={handleLogout}
+                className="text-sm text-[#0077b6] font-bold flex items-center gap-1 border hover:text-white border-[#0077b6] p-3 rounded-md hover:bg-[#0077b6]"
+              >
+                <TbLogout2 size={19} />
+                Logout
+              </button>
+            </div>
+          )}
           {/* Add login button for mobile */}
-          {/* {!user && (
+          {!user && (
             <Link
               to="/login"
               className={`block ${getLinkStyle("/login")}`}
@@ -296,16 +351,16 @@ const Nav = () => {
 
           {!user && (
             <Link
-              to="/register"
-              className={`block ${getLinkStyle("/register")}`}
+              to="/signUp"
+              className={`block ${getLinkStyle("/signUp")}`}
               onClick={() => {
-                setActiveLink("/register");
+                setActiveLink("/signUp");
                 setIsMobileMenuOpen(false);
               }}
             >
               <FaUserPlus className="inline-block mr-1" /> Sign UP
             </Link>
-          )} */}
+          )}
         </div>
       </div>
     </nav>

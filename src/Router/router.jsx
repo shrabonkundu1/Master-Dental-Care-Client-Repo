@@ -8,6 +8,8 @@ import AllVlogs from "../Pages/All Vlogs/AllVlogs";
 import AddVlog from "../Pages/Add Vlogs/AddVlog";
 import MyPostedVlogs from "../Pages/My Posted Vlogs/MyPostedVlogs";
 import Wishlist from "../Pages/Wishlist/Wishlist";
+import Login from "../Pages/Secure/Login";
+import SignUp from "../Pages/Secure/SignUp";
 
 
 const router = createBrowserRouter([
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
         {
             path: "/myWishlist",
             element: <Wishlist></Wishlist>,
+        },
+        {
+            path: "/login",
+            element: <Login></Login>,
+        },
+        {
+            path: "/signUp",
+            element: <SignUp></SignUp>,
         },
       ]
     },

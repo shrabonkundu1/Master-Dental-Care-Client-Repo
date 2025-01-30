@@ -31,18 +31,16 @@ const Footer = () => {
 
       <footer className="md:flex justify-between items-center py-10 md:py-0 px-2 md:px-10  md:p-10 md:w-[90%] mx-auto text-blue-800">
         <nav className="flex flex-col mb-10 md:mb-0 ">
-          <h6 className="text-2xl font-medium">Services</h6>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
+          <h6 className="text-2xl font-medium">Quick Links</h6>
+          <a className="link link-hover">Book Appointment</a>
+          <a className="link link-hover">Our Services</a>
+          <a className="link link-hover">About Us</a>
         </nav>
         <nav className="flex flex-col mb-10 md:mb-0 space-y-1">
           <h6 className="text-2xl font-medium">Company</h6>
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Contact</a>
           <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
         </nav>
         <div className="space-y-2 mb-2 ">
           <h2 className="text-2xl font-medium ">Contact us</h2>

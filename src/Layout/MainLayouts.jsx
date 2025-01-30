@@ -10,7 +10,7 @@ const MainLayouts = () => {
             {/* <Navbar></Navbar> */}
             <Nav></Nav>
 
-            <div>
+            <div className='mt-16'>
                 <Outlet></Outlet>
             </div>
 
