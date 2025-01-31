@@ -8,6 +8,7 @@ import AUthContext from '../../Context/AuthContext';
 import Swal from 'sweetalert2';
 import loginLottie from '../../lottie/login.json'
 import Lottie from 'react-lottie';
+import { toast } from 'react-toastify';
 // import axios from 'axios';
 
 
@@ -49,6 +50,54 @@ const Login = () => {
         }
 
 
+        const showError = (error) => {
+            if(error.code === 'auth/invalid-credential'){
+              Swal.fire({
+                icon: "error",
+                text: "Invalid credentials!",
+              });
+            }
+            else if(error.code === 'auth/user-not-found'){
+                Swal.fire({
+                    icon: "error",
+                    text: "User not found!",
+                  });
+            }
+            else if(error.code === 'auth/wrong-password'){
+                Swal.fire({
+                    icon: "error",
+                    text: "Wrong password!",
+                  });
+            }
+            else if(error.code === 'auth/invalid-email'){
+                Swal.fire({
+                    icon: "error",
+                    text: "IInvalid email!",
+                  });
+            }
+            else if(error.code === 'auth/too-many-requests'){
+                Swal.fire({
+                    icon: "error",
+                    text: "Too many requests!",
+                  });
+          
+            }
+            else if(error.code === 'auth/email-already-in-use'){
+                Swal.fire({
+                    icon: "error",
+                    text: "Email already in use!",
+                  });
+            }
+            else{
+                Swal.fire({
+                    icon: "error",
+                    text: "Something went wrong!",
+                  });
+            }
+          }
+        
+
+
     const handleLogIn = e => {
       e.preventDefault();
       const form = e.target;
@@ -85,7 +134,8 @@ const Login = () => {
         });
       })
       .catch(error => {
-        console.log(error.message)
+          showError(error) 
+        console.log(error.message);
       })
       
   }

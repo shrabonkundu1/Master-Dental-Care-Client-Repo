@@ -1,23 +1,24 @@
-import React, { useContext, useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import AUthContext from '../../Context/AuthContext';
-import { toast } from 'react-toastify';
-import Swal from 'sweetalert2';
-
+import React, { useContext, useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import AUthContext from "../../Context/AuthContext";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
-    const [showPassword,setShowPassword] = useState(false);
-    const navigate = useNavigate();
-    const location = useLocation();
-    const {createUser,signInWithGoogle}= useContext(AUthContext);
+  const [showPassword, setShowPassword] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { createUser, signInWithGoogle } = useContext(AUthContext);
 
-    const from  =  location.state || '/';
-    const handleGoogleLogin =() => {
-      signInWithGoogle()
-      .then(result => {
-        navigate(from)
+  const from = location.state || "/";
+  const handleGoogleLogin = () => {
+    signInWithGoogle()
+      .then((result) => {
+        navigate(from);
         const Toast = Swal.mixin({
           toast: true,
           position: "top-end",
@@ -27,130 +28,161 @@ const SignUp = () => {
           didOpen: (toast) => {
             toast.onmouseenter = Swal.stopTimer;
             toast.onmouseleave = Swal.resumeTimer;
-          }
+          },
         });
         Toast.fire({
           icon: "success",
-          title: "Google Sign in successfully"
+          title: "Google Sign in successfully",
         });
       })
-      .catch(error => {
-        console.log(error.message)
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    // const terms = form.terms.value;
+    console.log(email, password);
+
+    setPasswordError("");
+
+    if (password.length < 6) {
+      setPasswordError("Password should be 6 charecter or longer");
+      return;
+    }
+
+    if (!/[A-Z]/.test(password)) {
+      setPasswordError("Password must contain one uppercase letter");
+      return;
+    }
+    if (!/[a-z]/.test(password)) {
+      setPasswordError("Password must contain one lowercase letter");
+      return;
+    }
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      setPasswordError("Password must contain at least one special character");
+      return;
+    }
+
+    if (!isChecked) {
+      setPasswordError("You must accept the Terms & Conditions");
+      return;
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        navigate(from);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "center",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Sign UP successfully",
+        });
       })
-    }
-
-    const handleSignUp = e => {
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email,password)
-
-
-        createUser(email,password)
-        .then(result =>{
-          navigate(form)
-          const Toast = Swal.mixin({
-            toast: true,
-            position: "center",
-            showConfirmButton: false,
-            timer: 2000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.onmouseenter = Swal.stopTimer;
-              toast.onmouseleave = Swal.resumeTimer;
-            }
-          });
-          Toast.fire({
-            icon: "success",
-            title: "Sign UP successfully"
-          });
-        })
-        .catch(error => {
-          console.log(error.message)
-        })
-    }
-    return (
-            <div>
-        {/* <Helmet>
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+  return (
+    <div>
+      {/* <Helmet>
           <title>Asthetic Gamer || Signin</title>
         </Helmet> */}
-        <div className="card bg-base-100 w-full max-w-lg mx-auto mt-20 shrink-0 shadow-2xl shadow-blue-400 mb-24">
-          <form
-          onSubmit={handleSignUp}
-            className="card-body w-full mx-auto my-6"
-          >
-            <h1 className="text-5xl font-bold mb-10">Sign Up now!</h1>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Name</span>
-              </label>
+      <div className="card bg-base-100 w-full max-w-lg mx-auto mt-20 shrink-0 shadow-2xl shadow-blue-400 mb-24">
+        <form onSubmit={handleSignUp} className="card-body w-full mx-auto my-6">
+          <h1 className="text-5xl font-bold mb-10">Sign Up now!</h1>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Name</span>
+            </label>
+            <input
+              type="text"
+              name="name"
+              placeholder="name"
+              className="input input-bordered"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Photo</span>
+            </label>
+            <input
+              type="text"
+              name="photo"
+              placeholder="photo url"
+              className="input input-bordered"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="email"
+              className="input input-bordered"
+              required
+            />
+          </div>
+          <div className="form-control relative">
+            <label className="label">
+              <span className="label-text">Password</span>
+            </label>
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="password"
+              className="input input-bordered"
+              required
+            />
+            <div
+              onClick={() => setShowPassword(!showPassword)}
+              className=" absolute right-4 top-[54px]"
+            >
+              {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
+            </div>
+          </div>
+          <div className="form-control">
+            <label className="label justify-start gap-2 cursor-pointer">
               <input
-                type="text"
-                name="name"
-                placeholder="name"
-                className="input input-bordered"
-                required
+                type="checkbox"
+                checked={isChecked}
+                onChange={(e) => setIsChecked(e.target.checked)}
+                name="terms"
+                className="checkbox"
               />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Photo</span>
-              </label>
-              <input
-                type="text"
-                name="photo"
-                placeholder="photo url"
-                className="input input-bordered"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="email"
-                name="email"
-                placeholder="email"
-                className="input input-bordered"
-                required
-              />
-            </div>
-            <div className="form-control relative">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                placeholder="password"
-                className="input input-bordered"
-                required
-              />
-              <div
-                onClick={() => setShowPassword(!showPassword)}
-                className=" absolute right-4 top-[54px]"
-              >
-                {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
-              </div>
-             
-            </div>
-            <div className="form-control">
-              <label className="label justify-start gap-2 cursor-pointer">
-                <input type="checkbox" name="terms" className="checkbox" />
-                <span className="label-text">
-                  Accept all the Terms & Condition.
-                </span>
-              </label>
-            </div>
-            <div className="form-control mt-6">
-              <button type="submit" className="btn btn-primary">
-                Sign Up
-              </button>
-            </div>
-          </form>
-          {/* {errorMessage && (
+              <span className="label-text">
+                Accept all the Terms & Condition.
+              </span>
+            </label>
+          </div>
+          <div className="form-control mt-6">
+            <button type="submit" className="btn btn-primary">
+              Sign Up
+            </button>
+          </div>
+        </form>
+        {passwordError && (
+          <p className="text-xl text-red-500 text-center ">{passwordError}</p>
+        )}
+        {/* {errorMessage && (
             <p className="text-xl text-red-500 ">{errorMessage}</p>
           )}
           {success && (
@@ -158,28 +190,27 @@ const SignUp = () => {
               Sign Up is Successfull.
             </p>
           )} */}
-          <div className="divider w-[90%] mx-auto">OR</div>
-  
-          <div className="text-center my-4">
-            <button
-              onClick={handleGoogleLogin}
-              className="btn btn-outline bg-yellow-300"
-            >
-              <FcGoogle  className="text-xl hover:text-white" />
-              Sign Up With Google
-            </button>
-          </div>
-  
-          <p className="mb-10 mx-auto ">
-            Already have an account Please{" "}
-            <Link className="text-blue-700 ml-2" to="/login">
-              Login
-            </Link>
-          </p>
+        <div className="divider w-[90%] mx-auto">OR</div>
+
+        <div className="text-center my-4">
+          <button
+            onClick={handleGoogleLogin}
+            className="btn btn-outline bg-yellow-300"
+          >
+            <FcGoogle className="text-xl hover:text-white" />
+            Sign Up With Google
+          </button>
         </div>
+
+        <p className="mb-10 mx-auto ">
+          Already have an account Please{" "}
+          <Link className="text-blue-700 ml-2" to="/login">
+            Login
+          </Link>
+        </p>
       </div>
-    
-    );
+    </div>
+  );
 };
 
 export default SignUp;
