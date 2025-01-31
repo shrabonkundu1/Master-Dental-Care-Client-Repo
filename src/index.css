@@ -17,3 +17,25 @@
 .hero{
   border: none;
 }
+
+.label-text {
+  
+  background: linear-gradient(45deg, #4759f7, #89a6f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent
+}
+
+.heading {
+  background: linear-gradient(45deg, #1544f0, hsla(231, 75%, 60%, 0.451));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent
+}
+
+.input, .select {
+  color: rgb(91, 93, 94);
+}
+
+.card-body {
+  padding-left: 15px;
+  padding-right: 15px;
+}

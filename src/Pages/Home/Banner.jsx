@@ -38,11 +38,11 @@ const Banner = () => {
   };
 
   return (
-    <div className="w-[78%] md:w-full mx-auto bg-blue-50">
+    <div className="w-[78%] md:w-full mx-auto bg-blue-50 ">
       <div>
         <Slider className="w-[90%] mx-auto py-16" {...settings}>
           <div>
-            <div className="grid grid-cols-1 md:grid-cols-4 items-center min-h-[450px]  gap-28  p-5 rounded-lg ">
+            <div className="grid grid-cols-1 md:grid-cols-4 border-0 items-center min-h-[450px]  gap-28  p-5 rounded-lg ">
               <div className="space-y-8 col-span-2">
                 <motion.h2
                   initial={{ y: 170, opacity: 0 }}
@@ -70,12 +70,15 @@ const Banner = () => {
                   transition={{ duration: 2, delay: 0, ease: easeInOut }}
                   className="flex gap-3"
                 >
-                  <button className="px-7 rounded-full text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  border py-4">
+                  <motion.button animate={{ y: [80, 0] }}
+                     transition={{ duration: 1.4, delay: 0, ease: easeInOut }}
+                      className="px-7 rounded-full text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  border py-4">
                     Book Appointment
-                  </button>
-                  <button className="px-7 rounded-full text-blue-500 border-blue-600 border-2  py-4">
+                  </motion.button>
+                  <motion.button animate={{ y: [80, 0] }}
+                     transition={{ duration: 1.4, delay: 0, ease: easeInOut }} className="px-7 rounded-full text-blue-500 border-blue-600 border-2  py-4">
                     view Treatments
-                  </button>
+                  </motion.button>
                 </motion.div>
               </div>
               <div className="col-span-2 flex ">
