@@ -13,11 +13,11 @@ const Home = () => {
         <div className='w-[90%] mx-auto'>
         <RecentBlogPost></RecentBlogPost>
         </div>
+        <div className='w-[90%] mx-auto my-24 mb-36'>
+            <OurServices></OurServices>
+        </div>
         <div className='bg-blue-100 h-full w-full'>
             <Newsletter></Newsletter>
-        </div>
-        <div className='w-[90%] mx-auto my-24'>
-            <OurServices></OurServices>
         </div>
        </div>
         

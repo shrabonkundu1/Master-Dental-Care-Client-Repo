@@ -125,7 +125,7 @@ const Nav = () => {
               </div>
               <ul
                 tabIndex={0}
-                className={`dropdown-content       rounded-box z-[1] w-52 p-5 space-y-3 shadow`}
+                className={`dropdown-content    bg-white   rounded-box z-[1] w-52 p-5 space-y-3 shadow`}
               >
                 <li className="my-1 ">
                   <Link
