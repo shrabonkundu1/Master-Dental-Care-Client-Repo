@@ -18,7 +18,7 @@ const AddVlog = () => {
       <h2 className="md:text-5xl text-[32px] text-center font-bold py-8 md:py-16 heading">
         Create A New Blog
       </h2>
-      <form onSubmit={handleAddBlog} className="card-body">
+      <form onSubmit={handleAddBlog} className="card-body md:w-[90%] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8">
           {/* Company name   */}
           <div className="form-control">

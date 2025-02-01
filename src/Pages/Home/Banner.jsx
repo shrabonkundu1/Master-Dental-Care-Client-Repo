@@ -17,7 +17,7 @@ const Banner = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 3000,
     arrows: false,
     responsive: [
       {
@@ -38,12 +38,12 @@ const Banner = () => {
   };
 
   return (
-    <div className="w-[78%] md:w-full mx-auto bg-blue-50 ">
+    <div className=" md:w-full mx-auto bg-blue-50 ">
       <div>
-        <Slider className="w-[90%] mx-auto py-16" {...settings}>
+        <Slider className="w-full mx-auto " {...settings}>
           <div>
-            <div className="grid grid-cols-1 md:grid-cols-4 border-0 items-center min-h-[450px]  gap-28  p-5 rounded-lg ">
-              <div className="space-y-8 col-span-2">
+            <div className="grid justify-center w-[85%] mx-auto grid-cols-1 md:grid-cols-2 border-0 items-center min-h-[550px]  md:gap-28  p-5 rounded-lg ">
+              <div className="space-y-8 ">
                 <motion.h2
                   initial={{ y: 170, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -81,7 +81,7 @@ const Banner = () => {
                   </motion.button>
                 </motion.div>
               </div>
-              <div className="col-span-2 flex ">
+              <div className=" flex ">
                 {/* <img className="w-[300px] rounded-lg" src={banner1} alt="" />
                 <img className="w-[300px] rounded-lg" src={banner2} alt="" /> */}
                 <motion.img
@@ -106,7 +106,7 @@ const Banner = () => {
           <div>
             <div className="flex items-center  gap-3   rounded-lg ">
               <div
-                className="hero min-h-[450px] w-full"
+                className="hero min-h-[550px] w-full"
                 style={{
                   backgroundImage:
                     "url(https://i.ibb.co.com/bR51GFJ3/beauty-canal-assistant-background-care.jpg)",
@@ -118,7 +118,7 @@ const Banner = () => {
                     <motion.h2
                       initial={{ y: 170, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 1.3, delay: 5.5, ease: easeInOut }}
+                      transition={{ duration: 1.3, delay: 3.5, ease: easeInOut }}
                       className="md:text-5xl sm:text-4xl text-[32px] text-white lg:text-5xl font-bold  leading-10"
                     >
                      <span className="mb-10 bg-gradient-to-r from-blue-200 to-blue-50 bg-clip-text text-transparent "> Transform
@@ -129,7 +129,7 @@ const Banner = () => {
                     </motion.h2>{" "}
                     <motion.p
                       animate={{ y: [100, 0] }}
-                      transition={{ duration: 1.4, delay: 5.5, ease: easeInOut }}
+                      transition={{ duration: 1.4, delay: 3.5, ease: easeInOut }}
                       className="bg-gradient-to-r from-blue-200 to-blue-50 bg-clip-text text-transparent hite mx-48 text-xl  text-center"
                     >
                       Experience world-class dental care with our team of
@@ -138,7 +138,7 @@ const Banner = () => {
                     </motion.p>
                     <motion.button 
                      animate={{ y: [80, 0] }}
-                     transition={{ duration: 1.4, delay: 5.5, ease: easeInOut }} className="px-12 rounded-full hover:bg-gradient-to-r  hover:from-blue-200 hover:to-blue-50 hover:text-blue-600 text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  border py-4">
+                     transition={{ duration: 1.4, delay: 3.5, ease: easeInOut }} className="px-12 rounded-full hover:bg-gradient-to-r  hover:from-blue-200 hover:to-blue-50 hover:text-blue-600 text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  border py-4">
                   View Services
                   </motion.button>
                   </div>
@@ -150,7 +150,7 @@ const Banner = () => {
           <div>
             <div className="flex items-center  gap-3   rounded-lg ">
               <div
-                className="hero min-h-[450px] w-full"
+                className="hero min-h-[550px] w-full"
                 style={{
                   backgroundImage:
                     "url(https://i.ibb.co.com/FkfQHS4W/half-face-portrait-smiling-woman.jpg)",
@@ -162,7 +162,7 @@ const Banner = () => {
                     <motion.h2
                       initial={{ y: 170, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 1.3, delay: 10.7, ease: easeInOut }}
+                      transition={{ duration: 1.3, delay: 6.7, ease: easeInOut }}
                       className="md:text-5xl sm:text-4xl text-left text-[32px] text-white lg:text-5xl font-bold  leading-10"
                     >
                      <span className="mb-10 bg-gradient-to-r from-blue-200 to-blue-50 bg-clip-text text-transparent "> Transform
@@ -173,7 +173,7 @@ const Banner = () => {
                     </motion.h2>{" "}
                     <motion.p
                       animate={{ y: [100, 0] }}
-                      transition={{ duration: 1.4, delay: 10.7, ease: easeInOut }}
+                      transition={{ duration: 1.4, delay: 6.7, ease: easeInOut }}
                       className="bg-gradient-to-r text-left from-blue-200 to-blue-50 bg-clip-text text-transparent hite w-3/4  text-xl  "
                     >
                       Experience world-class dental care with our team of
@@ -182,7 +182,7 @@ const Banner = () => {
                     </motion.p>
                     <motion.button 
                      animate={{ y: [80, 0] }}
-                     transition={{ duration: 1.4, delay: 10.7, ease: easeInOut }} className="px-12 rounded-full hover:bg-gradient-to-r  hover:from-blue-200 hover:to-blue-50 hover:text-blue-600 text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  border py-4">
+                     transition={{ duration: 1.4, delay: 6.7, ease: easeInOut }} className="px-12 rounded-full hover:bg-gradient-to-r  hover:from-blue-200 hover:to-blue-50 hover:text-blue-600 text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  border py-4">
                   View Services
                   </motion.button>
                   </div>

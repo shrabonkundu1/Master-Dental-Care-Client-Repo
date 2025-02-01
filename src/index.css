@@ -33,6 +33,7 @@
 
 .input, .select {
   color: rgb(91, 93, 94);
+  background-color: white;
 }
 
 .card-body {

@@ -27,4 +27,4 @@ const RecentBlogPost = () => {
     );
 };
 
-export default RecentBlogPost;a
+export default RecentBlogPost;

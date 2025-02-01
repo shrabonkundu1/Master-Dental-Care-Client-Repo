@@ -16,8 +16,9 @@ const RecentBlogCard = ({ blog }) => {
           <h2 className="card-title font-bold">{title}</h2>
           <p><span className="font-medium">Category:</span> {category}</p>
           <p><span className="font-medium">Deadline:</span> {blogDeadline}</p>
-          <div className="card-actions justify-end">
-            <button className="w-full py-3 border rounded-lg  text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  translate-2 transition-transform  font-bold hover:scale-105">Buy Now</button>
+          <div className="card-actions flex gap-4 justify-end">
+            <button className="w-max py-3 px-16 border rounded-full  text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  translate-2 transition-transform  font-bold hover:scale-105">Details</button>
+            <button className="w-max py-3 border rounded-full  text-slate-50 bg-gradient-to-r  from-blue-400 to-blue-700  translate-2 transition-transform  font-bold hover:scale-105 px-16">Wishlist</button>
           </div>
         </div>
       </div>
