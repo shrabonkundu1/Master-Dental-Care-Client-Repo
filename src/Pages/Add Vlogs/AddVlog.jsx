@@ -13,7 +13,7 @@ const AddVlog = () => {
     const initialData = Object.fromEntries(formData.entries());
   };
   return (
-   <div className=" w-full bg-blue-100 py-16">
+   <div className=" w-full bg-blue-100 py-10 md:py-16">
      <div className="card bg-blue-50 md:w-3/4 w-[95%] mx-auto my-16  shadow-2xl">
       <h2 className="md:text-5xl text-[32px] text-center font-bold py-8 md:py-16 heading">
         Create A New Blog
@@ -31,7 +31,7 @@ const AddVlog = () => {
               type="text"
               name="title"
               placeholder="Blog Title"
-              className="input input-bordered "
+              className="input input-bordered w-[335px] md:w-full"
               required
             />
           </div>

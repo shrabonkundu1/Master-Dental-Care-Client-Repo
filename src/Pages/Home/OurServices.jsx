@@ -4,7 +4,7 @@ import OurService2 from "../../assets/teeth.jpg";
 import { BsArrowUpRightCircleFill } from "react-icons/bs";
 const OurServices = () => {
   return (
-    <div className="flex flex-col md:flex-row w-full rounded-lg md:h-[500px] justify-center items-center gap-16 mt-48 md:mt-0">
+    <div className="flex  md:flex-row w-full rounded-lg md:h-[500px] justify-center items-center gap-24 md:gap-16 flex-col-reverse  mt-24 md:mt-36 mb-24">
       <div className="relative ">
         <img
           className="md:w-[600px] rounded-lg md:h-[500px] object-cover"
@@ -12,13 +12,13 @@ const OurServices = () => {
           alt=""
         />
         <img
-          className="md:w-64 md:h-48 w-44 h-28 object-cover border-8 border-blue-50 rounded-lg absolute md:right-[-50px] right-[-20px] bottom-[-50px]"
+          className="md:w-64 md:h-48 w-44 h-28 object-cover border-8 border-blue-50 rounded-md absolute md:right-[-50px] right-[-20px] bottom-[-50px]"
           src={OurService2}
           alt=""
         />
 
-        <div className="md:w-40 w-24 absolute top-[-40px] md:top-5 left-[-20px] md:left-5 bg-white rounded-lg shadow-lg text-center">
-          <div className="bg-gradient-to-br from-blue-600 to-green-200 text-white md:text-lg font-semibold py-2 rounded-t-lg">
+        <div className="md:w-40 w-24 absolute top-[-40px] md:top-5 left-[-25px] md:left-5 bg-white md:rounded-lg rounded-r-lg shadow-lg text-center">
+          <div className="bg-gradient-to-br from-blue-600 to-green-200 text-white md:text-lg font-semibold py-2 md:rounded-t-lg rounded-tr-lg">
             Excellent
           </div>
           <div className="flex justify-center mt-1 md:mt-3">
