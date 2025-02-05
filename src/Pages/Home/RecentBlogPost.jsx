@@ -4,13 +4,11 @@ import RecentBlogCard from './RecentBlogCard';
 
 const RecentBlogPost = () => {
     const [blogs,setBlogs] = useState([]);
-    console.log(blogs)
 
     useEffect(()=> {
         fetch('http://localhost:5000/recentBlogs')
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             setBlogs(data)
         })
     },[])

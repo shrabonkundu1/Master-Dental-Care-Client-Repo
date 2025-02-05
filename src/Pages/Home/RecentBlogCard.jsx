@@ -1,8 +1,46 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import AuthContext from "../../Context/AuthContext";
+import Swal from "sweetalert2";
 
 const RecentBlogCard = ({ blog }) => {
-  const { title, blog_url, category, blogDeadline } = blog;
-  console.log(blog);
+  const { _id,title, blog_url, category, blogDeadline } = blog;
+  const {user} = useContext(AuthContext);
+  const navigate = useNavigate()
+const {id} = useParams()
+  const handleAddToWishlist = () =>{
+    const blogData =  {
+      blog_id : id,
+      hr_email : user?.email,
+      title : title,
+      category: category,
+      blog_url : blog_url,
+      deadline : blogDeadline
+    }
+
+    fetch(`http://localhost:5000/myWishlist?email=${user.email}`,{
+      method:'POST',
+      headers: {
+          'Content-Type':"application/json"
+      },
+      body: JSON.stringify(blogData)
+  })
+  .then(res => res.json())
+  .then(data => {
+     if(data.insertedId){
+      Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1200
+        });
+        navigate('/myWishlist')
+     }
+        
+  })  }
+
+ 
   return (
     <div>
       <div className="card card-compact rounded-md group  px-1 py-2 border border-[#a0d6f3] bg-[#f3f7fd] hover:bg-white duration-1800 transition  hover:translate-y-[-4px]">
@@ -17,8 +55,8 @@ const RecentBlogCard = ({ blog }) => {
           <p><span className="font-medium">Category:</span> {category}</p>
           <p><span className="font-medium">Deadline:</span> {blogDeadline}</p>
           <div className="card-actions flex gap-4 justify-end">
-            <button className="w-max py-3 px-10 md:px-16 border rounded-full  text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  translate-2 transition-transform  font-bold hover:scale-105">Details</button>
-            <button className="w-max py-3 border rounded-full  text-slate-50 bg-gradient-to-r  from-blue-400 to-blue-700  translate-2 transition-transform  font-bold hover:scale-105 px-10 md:px-16">Wishlist</button>
+           <Link to={`/blogs/${_id}`}> <button className="w-max py-3 px-10 md:px-16 border rounded-full  text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  translate-2 transition-transform  font-bold hover:scale-105">Details</button></Link>
+            <button onClick={handleAddToWishlist} className="w-max py-3 border rounded-full  text-slate-50 bg-gradient-to-r  from-blue-400 to-blue-700  translate-2 transition-transform  font-bold hover:scale-105 px-10 md:px-16">Wishlist</button>
           </div>
         </div>
       </div>

@@ -22,7 +22,6 @@ const Nav = () => {
   const [activeLink, setActiveLink] = React.useState(location.pathname);
   //   const { user, logOut, loading } = useFirebaseAuth();
   const { user, loading,logOutUser } = useContext(AuthContext);
-  console.log(user);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -104,6 +103,13 @@ const Nav = () => {
               onClick={() => setActiveLink("/allBlog")}
             >
               <VscOpenPreview className="lg:inline-block mr-1" /> All Blog
+            </Link>
+            <Link
+              to="/featuredBlogs"
+              className={getLinkStyle("/featuredBlogs")}
+              onClick={() => setActiveLink("/featuredBlogs")}
+            >
+              <VscOpenPreview className="lg:inline-block mr-1" /> Featured Blogs
             </Link>
 
             <div

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const PrivateRoute = () => {
+const FeaturedBlogs = () => {
     return (
         <div>
-            
+            Featured Blogs
         </div>
     );
 };
 
-export default PrivateRoute;
+export default FeaturedBlogs;

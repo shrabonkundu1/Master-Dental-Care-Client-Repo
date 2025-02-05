@@ -1,16 +1,41 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import AuthContext from "../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { div } from "framer-motion/client";
+import Swal from "sweetalert2";
 
 const AddVlog = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [loading,setLoading] = useState(false)
 
   const handleAddBlog = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.targer);
+    const formData = new FormData(e.target);
     const initialData = Object.fromEntries(formData.entries());
+    console.log(initialData)
+
+    // --------post to server :
+    fetch('http://localhost:5000/blogs',{
+      method: "POST",
+      headers:{
+        "content-type" : "application/json"
+      },
+      body: JSON.stringify(initialData)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      if(data.insertedId){
+        Swal.fire({
+          title: "Blog Added Successfully",
+          icon: "success",
+          draggable: true
+        });
+        e.target.reset();
+        navigate('/myPostedBlog')
+      }
+    })
   };
   return (
    <div className=" w-full bg-blue-100 py-10 md:py-16">
@@ -58,6 +83,7 @@ const AddVlog = () => {
             </label>
             <select
               defaultValue ="Select category"
+              name="category"
               className="select  select-bordered select-ghost w-full "
             >
               <option disabled>Select category</option>
@@ -129,7 +155,7 @@ const AddVlog = () => {
         </div>
 
         <div className="form-control mt-6">
-          <button className="w-full border rounded-lg py-4 hover:w-[98%] hover:mx-auto text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400 hover:scale-105 translate-2 transition-transform  font-bold">Add Blog</button>
+          <button className="w-full border rounded-lg py-4 hover:w-[98%] hover:mx-auto text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400 hover:scale-105 translate-2 transition-transform  font-bold">Submit</button>
         </div>
       </form>
     </div>

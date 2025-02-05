@@ -35,7 +35,7 @@ const Newsletter = () => {
         <form onSubmit={handleSubscribe} className="flex ">
           <input
           type="email"
-            className="border-2 rounded-l-lg pl-5 bg-gradient-to-r from-slate-100 to-blue-50 bg pr-14 md:pr-80 py-3 md:py-4"
+            className="border-2 rounded-l-lg pl-5 bg-gradient-to-r from-slate-100 to-blue-50 bg pr-12 md:pr-80 py-3 md:py-4"
             placeholder="Enter your email"
             onChange={(e) => {setEmail(e.target.value)}}
             name="email"

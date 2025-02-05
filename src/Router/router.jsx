@@ -10,6 +10,8 @@ import MyPostedVlogs from "../Pages/My Posted Vlogs/MyPostedVlogs";
 import Wishlist from "../Pages/Wishlist/Wishlist";
 import Login from "../Pages/Secure/Login";
 import SignUp from "../Pages/Secure/SignUp";
+import BlogDetails from "../Pages/My Posted Vlogs/BlogDetails";
+import FeaturedBlogs from "../Pages/Featured Blogs/FeaturedBlogs";
 
 
 const router = createBrowserRouter([
@@ -31,12 +33,21 @@ const router = createBrowserRouter([
             element: <AddVlog></AddVlog>,
         },
         {
+            path: "/featuredBlogs",
+            element: <FeaturedBlogs></FeaturedBlogs>,
+        },
+        {
             path: "/myPostedBlog",
             element: <MyPostedVlogs></MyPostedVlogs>,
         },
         {
             path: "/myWishlist",
             element: <Wishlist></Wishlist>,
+        },
+        {
+            path: "/blogs/:id",
+            element: <BlogDetails></BlogDetails>,
+            loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
         },
         {
             path: "/login",

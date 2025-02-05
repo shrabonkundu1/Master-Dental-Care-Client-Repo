@@ -5,8 +5,9 @@ import './index.css'
 import {
   RouterProvider,
 } from "react-router-dom";
-import router from './Router/Router';
+// import router from './Router/Router';
 import AuthProvider from './Context/AuthProvider';
+import router from './Router/router';
 
 
 createRoot(document.getElementById('root')).render(
