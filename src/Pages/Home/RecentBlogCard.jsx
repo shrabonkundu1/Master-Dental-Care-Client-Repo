@@ -46,7 +46,8 @@ const {id} = useParams()
       <div className="card card-compact rounded-md group  px-1 py-2 border border-[#a0d6f3] bg-[#f3f7fd] hover:bg-white duration-1800 transition  hover:translate-y-[-4px]">
         <figure>
           <img
-            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          className="w-full object-cover rounded-sm h-52"
+            src={blog_url}
             alt="Shoes"
           />
         </figure>

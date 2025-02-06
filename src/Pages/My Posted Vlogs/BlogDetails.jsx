@@ -61,7 +61,7 @@ const BlogDetails = () => {
           )
         }
         </div>
-        {/* <img src={data.blog_url} alt={data.title} /> */}
+        <img  className="rounded-lg md:w-[970px] md:h-[600px] object-cover" src={data.blog_url} alt={data.title} />
         {/* <div className="flex  gap-1 text-[18px] px-7 py-4 border shadow-lg rounded-lg">
           <span className="font-bold">Description:</span>
           <span className="text-wrap">{data.description}</span>

@@ -53,7 +53,7 @@ const Wishlist = () => {
       <div className="overflow-x-auto">
         <table className="table my-16 w-[90%] mx-auto">
           <thead className="">
-            <tr>
+            <tr className="font-semibold text-xl text-gray-800">
               <th>Image</th>
               <th>Title</th>
               <th>Category</th>
@@ -67,8 +67,8 @@ const Wishlist = () => {
                 <td>
                   <div className="flex items-center gap-3">
                     <div className="avatar">
-                      <div className="mask mask-squircle h-12 w-12">
-                        <img src={data.blogs_url} alt={data.title} />
+                      <div className="mask rounded-lg h-20 w-20">
+                        <img src={data.blog_url} alt={data.title} />
                       </div>
                     </div>
                   </div>
@@ -84,7 +84,7 @@ const Wishlist = () => {
                   >
                     X
                   </button>
-                  <Link to={'/blogDetails'} className="btn">
+                  <Link to={`/blogs/${data._id}`} className="btn">
                   Details 
                   </Link>
                  </div>

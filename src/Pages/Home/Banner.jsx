@@ -42,7 +42,7 @@ const Banner = () => {
       <div>
         <Slider className="w-full mx-auto " {...settings}>
           <div>
-            <div className="grid justify-center md:w-[85%] mx-auto grid-cols-1 md:grid-cols-2 border-0 items-center h-[700px] md:min-h-[550px]  md:gap-28  p-5 rounded-lg ">
+            <div className="grid justify-center md:w-[85%] mx-auto grid-cols-1 md:grid-cols-2 border-0 items-center  min-h-[550px]  md:gap-28  p-5 rounded-lg ">
               <div className="md:space-y-8 space-y-4">
                 <motion.h2
                   initial={{ y: 170, opacity: 0 }}
