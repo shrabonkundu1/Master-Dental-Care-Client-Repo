@@ -1,271 +1,97 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import AuthContext from "../../Context/AuthContext";
-// import useAuth from "../../Hooks/UseAuth";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-const AddVlog = () => {
-  const navigate = useNavigate();
-    const {user} = useContext(AuthContext);
-  const handleAddBlog = (e) => {
+const BlogDetails = ({ user }) => {
+  const { id } = useParams(); // URL থেকে blog_id নিচ্ছি
+  const [blog, setBlog] = useState(null);
+  const [comments, setComments] = useState([]);
+  const [commentText, setCommentText] = useState("");
+
+  useEffect(() => {
+    // ব্লগের তথ্য আনবো
+    fetch(`http://localhost:5000/api/blogs/${id}`)
+      .then((res) => res.json())
+      .then((data) => setBlog(data));
+
+    // ব্লগের কমেন্ট আনবো
+    fetch(`http://localhost:5000/api/comments/${id}`)
+      .then((res) => res.json())
+      .then((data) => setComments(data));
+  }, [id]);
+
+  // ✅ ২️⃣ নতুন কমেন্ট সাবমিট ফাংশন
+  const handleCommentSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const initialData = Object.fromEntries(formData.entries());
-
-    // rest use kore distructure
-    const { min, max, currency, ...newJobs } = initialData;
-
-    // to set key and value such as{min:"15000",max: "25000", currency: "BDT"}
-    newJobs.salaryRange = { min, max, currency };
-
-    // create js array  in spilt('\n') method
-    newJobs.requirements = newJobs.requirements.split("\n");
-
-    newJobs.responsiblities = newJobs.responsiblities.split("\n");
-    console.log(newJobs);
-
-    // new job post req server side
-    fetch("https://job-portal-server-phi-five.vercel.app/jobs", {
+    fetch("http://localhost:5000/api/comments/add", {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newJobs),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        blog_id: id,
+        user_name: user?.displayName,
+        user_profile_picture: user?.photoURL,
+        comment_text: commentText,
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
-          Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: "Your work has been saved",
-            showConfirmButton: false,
-            timer: 1200,
-          });
-          navigate("/myPostedJobs");
+        if (data.success) {
+          setComments([...comments, { user_name: user?.displayName, user_profile_picture: user?.photoURL, comment_text: commentText }]);
+          setCommentText("");
         }
       });
   };
+
   return (
-    <div className="card bg-base-100 w-3/4 mx-auto my-16  shadow-2xl">
-      <h2 className="text-5xl text-center font-bold py-16">Add Job</h2>
-      <form onSubmit={handleAddJob} className="card-body">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Company name   */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Company Name</span>
-            </label>
-            <input
-              type="text"
-              name="company"
-              placeholder="Company Name"
-              className="input input-bordered"
-              required
-            />
-          </div>
-          {/* Company logo   */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Company Logo</span>
-            </label>
-            <input
-              type="url"
-              name="company_logo"
-              placeholder="Logo Url"
-              className="input input-bordered"
-              required
-            />
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* job title  */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Job title</span>
-            </label>
-            <input
-              type="text"
-              name="title"
-              placeholder="Job title"
-              className="input input-bordered"
-              required
-            />
-          </div>
-          {/* job location */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Job Location</span>
-            </label>
-            <input
-              type="text"
-              name="location"
-              placeholder="Job Location"
-              className="input input-bordered"
-              required
-            />
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* job category */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Job Category</span>
-            </label>
-            <select
-              defaultValue="Select job category"
-              className="select  select-bordered select-ghost w-full "
-            >
-              <option disabled>Select job category</option>
-              <option>Full-time</option>
-              <option>Part-time</option>
-              <option>Intern</option>
-            </select>
-          </div>
-          {/* job type */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Job Feild</span>
-            </label>
-            <select
-              defaultValue="Select job Feild"
-              className="select  select-bordered select-ghost w-full "
-            >
-              <option disabled>Select job Feild</option>
-              <option>Engineering</option>
-              <option>Marketing</option>
-              <option>Finance</option>
-              <option>Teaching</option>
-            </select>
-          </div>
-        </div>
+    <div>
+      {blog ? (
+        <div>
+          <h1 className="text-3xl font-bold">{blog.title}</h1>
+          <p>{blog.description}</p>
 
-        {/* salary range */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-          {/* min */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Salary-range</span>
-            </label>
-            <input
-              type="number"
-              name="min"
-              placeholder="Min"
-              className="input input-bordered"
-              required
-            />
-          </div>
-          {/* max */}
-          <div className="form-control">
-            <input
-              type="number"
-              name="max"
-              placeholder="Max"
-              className="input input-bordered"
-              required
-            />
-          </div>
-          {/* currency */}
-          <div className="form-control">
-            <select
-              defaultValue="Select Currency"
-              name="currency"
-              className="select  select-bordered select-ghost w-full "
-            >
-              <option disabled>Select Currency</option>
-              <option>BDT</option>
-              <option>USDT</option>
-              <option>INR</option>
-              <option>DINHAM</option>
-            </select>
-          </div>
-        </div>
+          {/* ✅ ৩️⃣ Self-Comment Restriction */}
+          {user?.email === blog.authorEmail ? (
+            <p className="text-red-500">Cannot comment on your own blog.</p>
+          ) : (
+            <form onSubmit={handleCommentSubmit}>
+              <textarea
+                className="w-full p-2 border"
+                placeholder="Write your comment..."
+                value={commentText}
+                onChange={(e) => setCommentText(e.target.value)}
+                required
+              ></textarea>
+              <button type="submit" className="bg-blue-500 text-white px-4 py-2 mt-2">Post Comment</button>
+            </form>
+          )}
 
-        {/* hr section  */}
-        <div className="grid items-end grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Hr Name</span>
-            </label>
-            <input
-              type="text"
-              name="hr_name"
-              placeholder="Input Hr name"
-              className="input input-bordered"
-              required
-            />
+          {/* ✅ ৪️⃣ কমেন্ট দেখানো */}
+          <div>
+            <h2 className="text-2xl font-bold mt-4">Comments</h2>
+            {comments.length > 0 ? (
+              comments.map((comment, index) => (
+                <div key={index} className="p-2 border mt-2">
+                  <img src={comment.user_profile_picture} alt="Profile" className="w-10 h-10 rounded-full" />
+                  <p className="font-bold">{comment.user_name}</p>
+                  <p>{comment.comment_text}</p>
+                </div>
+              ))
+            ) : (
+              <p>No comments yet.</p>
+            )}
           </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Hr Email</span>
-            </label>
-            <input
-              defaultValue={user?.email}
-              type="email"
-              name="hr_email"
-              placeholder="Input Hr email"
-              className="input input-bordered"
-              required
-            />
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Deadline</span>
-            </label>
-            <input
-              type="date"
-              name="applicationDeadline"
-              placeholder=""
-              className="input input-bordered"
-              required
-            />
-          </div>
-        </div>
 
-        {/* description  */}
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Description</span>
-          </label>
-          <textarea
-            name="description"
-            placeholder="Description"
-            className="textarea textarea-bordered textarea-lg w-full "
-          ></textarea>
+          {/* ✅ ৫️⃣ Update Button (Conditional Rendering) */}
+          {user?.email === blog.authorEmail && (
+            <button className="bg-green-500 text-white px-4 py-2 mt-4" onClick={() => navigate(`/update-blog/${id}`)}>
+              Update Blog
+            </button>
+          )}
         </div>
-
-        {/*  requirements , respoonsiblities */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Company reqiremeents   */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Requirements</span>
-            </label>
-            <textarea
-              name="requirements"
-              placeholder="Put each requirements in a new line"
-              className="textarea textarea-bordered textarea-lg w-full "
-            ></textarea>
-          </div>
-          {/* Responsiblities   */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Responsiblities</span>
-            </label>
-            <textarea
-              name="responsiblities"
-              placeholder="Put each responsiblities in a new line"
-              className="textarea textarea-bordered textarea-lg w-full "
-            ></textarea>
-          </div>
-        </div>
-
-        <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
-        </div>
-      </form>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };
 
-export default AddVlog;
+export default BlogDetails;

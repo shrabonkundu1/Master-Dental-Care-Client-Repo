@@ -116,7 +116,7 @@ const AddVlog = () => {
             </label>
             <input
               defaultValue={user?.displayName}
-              readOnly
+              
               type="text"
               name="hr_name"
               placeholder="Input Hr name"
@@ -130,7 +130,6 @@ const AddVlog = () => {
             </label>
             <input
               defaultValue={user?.email}
-              readOnly
               type="email"
               name="hr_email"
               placeholder="Input Hr email"

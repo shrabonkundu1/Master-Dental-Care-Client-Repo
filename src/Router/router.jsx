@@ -12,6 +12,8 @@ import Login from "../Pages/Secure/Login";
 import SignUp from "../Pages/Secure/SignUp";
 import BlogDetails from "../Pages/My Posted Vlogs/BlogDetails";
 import FeaturedBlogs from "../Pages/Featured Blogs/FeaturedBlogs";
+import UpdateBlog from "../Pages/Add Vlogs/UpdateBlog";
+import PrivateRoute from "../Router/PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -30,7 +32,7 @@ const router = createBrowserRouter([
         },
         {
             path: "/addBlog",
-            element: <AddVlog></AddVlog>,
+            element: <PrivateRoute><AddVlog></AddVlog></PrivateRoute>,
         },
         {
             path: "/featuredBlogs",
@@ -38,16 +40,20 @@ const router = createBrowserRouter([
         },
         {
             path: "/myPostedBlog",
-            element: <MyPostedVlogs></MyPostedVlogs>,
+            element: <PrivateRoute><MyPostedVlogs></MyPostedVlogs></PrivateRoute>,
         },
         {
             path: "/myWishlist",
-            element: <Wishlist></Wishlist>,
+            element:<PrivateRoute> <Wishlist></Wishlist></PrivateRoute>,
         },
         {
             path: "/blogs/:id",
             element: <BlogDetails></BlogDetails>,
             loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
+        },
+        {
+            path: "/updateBlog/:id",
+            element: <PrivateRoute><UpdateBlog></UpdateBlog></PrivateRoute>,
         },
         {
             path: "/login",
