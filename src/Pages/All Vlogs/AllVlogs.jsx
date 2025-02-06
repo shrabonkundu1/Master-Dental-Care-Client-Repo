@@ -36,7 +36,6 @@ const AllVlogs = () => {
           className="border px-4 py-2 rounded-md"
         >
           <option value="">All Categories</option>
-          <option value="Dental Care">Dental Care</option>
           <option value="Oral Health">Oral Health</option>
           <option value="Preventive Dentistry">Preventive Dentistry</option>
           <option value="Restorative Dentistry">Restorative Dentistry</option>
