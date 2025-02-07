@@ -47,7 +47,6 @@ const MyPostedVlogs = () => {
               <th>Title</th>
               <th>Category</th>
               <th>Deadline</th>
-              <th>Comment Count</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -66,7 +65,6 @@ const MyPostedVlogs = () => {
                 <td>{blog.title}</td>
                 <td>{blog.category}</td>
                 <td>{blog.blogDeadline}</td>
-                <td>{blog.applicationCount}</td>
                 <th>
                   <Link to={`/viewComment/${blog._id}`}>
                   <button
