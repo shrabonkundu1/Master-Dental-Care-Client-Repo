@@ -6,7 +6,7 @@ const FeaturedBlogs = () => {
     const [loading,setLoading] = useState(false);
     useEffect(() => {
         setLoading(true)
-        fetch("http://localhost:5000/top_post")
+        fetch("https://master-dental-server-side.vercel.app/top_post")
         .then(res => res.json())
         .then(data => {
             setTopBlogs(data)

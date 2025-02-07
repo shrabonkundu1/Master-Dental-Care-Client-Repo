@@ -35,7 +35,7 @@ const FeaturedDataTable = () => {
       const [loading,setLoading] = useState(true);
 
       useEffect(() => {
-        axios.get(`http://localhost:5000/top_post`)
+        axios.get(`https://master-dental-server-side.vercel.app/top_post`)
         .then(res => {
             setData(res.data)
             setLoading(false)

@@ -14,10 +14,9 @@ const AddVlog = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const initialData = Object.fromEntries(formData.entries());
-    console.log(initialData)
 
     // --------post to server :
-    // fetch('http://localhost:5000/blogs',{
+    // fetch('https://master-dental-server-side.vercel.app/blogs',{
     //   method: "POST",
     //   headers:{
     //     "content-type" : "application/json"
@@ -26,7 +25,6 @@ const AddVlog = () => {
     // })
     // .then(res => res.json())
     // .then(data => {
-    //   console.log(data)
     //   if(data.insertedId){
     //     Swal.fire({
     //       title: "Blog Added Successfully",
@@ -44,7 +42,6 @@ const AddVlog = () => {
       },
     })
       .then((res) => {
-        console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({
             title: "Blog Added Successfully",

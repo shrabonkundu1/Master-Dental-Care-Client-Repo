@@ -18,7 +18,7 @@ const {id} = useParams()
       deadline : blogDeadline
     }
 
-    fetch(`http://localhost:5000/myWishlist?email=${user.email}`,{
+    fetch(`https://master-dental-server-side.vercel.app/myWishlist?email=${user.email}`,{
       method:'POST',
       headers: {
           'Content-Type':"application/json"

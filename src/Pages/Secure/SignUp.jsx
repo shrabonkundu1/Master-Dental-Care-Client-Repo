@@ -47,7 +47,6 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
     // const terms = form.terms.value;
-    console.log(email, password);
 
     setPasswordError("");
 

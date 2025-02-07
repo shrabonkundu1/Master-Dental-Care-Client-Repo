@@ -103,18 +103,15 @@ const Login = () => {
       const form = e.target;
       const email = form.email.value;
       const password = form.password.value;
-      console.log(email,password)
 
 
       logInUser(email,password)
       .then(result => {
-        console.log(result.user)
         // ----------------create token
         // const user = {email: result.user.email}
 
         // axios.post('https://job-portal-server-phi-five.vercel.app/jwt', user, {withCredentials:true})
         // .then(res =>{
-        //   console.log(res.data)
         // })
         // navigate(form)
         const Toast = Swal.mixin({

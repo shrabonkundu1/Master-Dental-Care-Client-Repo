@@ -7,14 +7,12 @@ const AllVlogs = () => {
 
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
-  console.log(blogs);
 
   useEffect(() => {
-    setLoading(true)
-    fetch(`http://localhost:5000/allBlogs?category=${category}&search=${search}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+    fetch(`https://master-dental-server-side.vercel.app/allBlogs?category=${category}&search=${search}`)
+    .then((res) => res.json())
+    .then((data) => {
+        setLoading(true)
         setBlogs(data);
         setLoading(false)
       });
@@ -30,7 +28,7 @@ const AllVlogs = () => {
   return (
     <div className="my-28 min-h-screen w-[90%] mx-auto">
       <h2 className="text-4xl md:text-5xl py-6 font-bold text-center bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent">
-        Recent Blogs {blogs.length}
+        All Blogs 
       </h2>
 
       <div className="flex flex-col md:flex-row gap-4 mb-8 justify-center">
@@ -57,7 +55,7 @@ const AllVlogs = () => {
         </select>
       </div>
 
-      <div className="grid justify-center items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8">
+      <div className="grid justify-center items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogs.map((blog) => (
           <RecentBlogCard key={blog._id} blog={blog}></RecentBlogCard>
         ))}

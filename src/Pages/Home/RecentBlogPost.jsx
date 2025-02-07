@@ -8,7 +8,7 @@ const RecentBlogPost = () => {
 
     useEffect(()=> {
         setLoading(true)
-        fetch('http://localhost:5000/recentBlogs')
+        fetch('https://master-dental-server-side.vercel.app/recentBlogs')
         .then(res => res.json())
         .then(data => {
             setBlogs(data)
@@ -25,7 +25,7 @@ const RecentBlogPost = () => {
       }
     return (
         <div className='my-28 min-h-screen'>
-            <h2 className='text-4xl md:text-5xl py-6 mb-10 font-bold text-center bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent'>Recent Blogs {blogs.length}</h2>
+            <h2 className='text-4xl md:text-5xl py-6 mb-10 font-bold text-center bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent'>Recent Blogs</h2>
 
             <div className='grid justify-center items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
                 {

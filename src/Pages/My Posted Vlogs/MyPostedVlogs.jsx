@@ -4,17 +4,15 @@ import { Link } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 const MyPostedVlogs = () => {
   const [blogs, setBlogs] = useState([]);
-  console.log(blogs);
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
   const [loading,setLoading] = useState(false);
 
 
   useEffect(() => {
-    // fetch(`http://localhost:5000/blogs?email=${user?.email}`)
+    // fetch(`https://master-dental-server-side.vercel.app/blogs?email=${user?.email}`)
     //   .then((res) => res.json())
     //   .then((data) => {
-    //     console.log(data);
     //     setBlogs(data);
     //   });
 
@@ -34,7 +32,7 @@ const MyPostedVlogs = () => {
   }
   return (
     <div>
-      <h2 className="mt-36 font-bold text-[32px] lg:text-5xl md:text-4xl text-center"> MyPostedVlogs : {blogs.length}</h2>
+      <h2 className="mt-36 font-bold text-[32px] lg:text-5xl md:text-4xl text-center"> MyPostedVlogs</h2>
 
    
 

@@ -8,11 +8,10 @@ const UpdateBlog = () => {
     const [data,setData] = useState([]);
     const [loading,setLoading] = useState(false);
 
-    console.log(data)
     const {id} = useParams();
     useEffect(() => {
       setLoading(true)
-        fetch(`http://localhost:5000/blogs/${id}`)
+        fetch(`https://master-dental-server-side.vercel.app/blogs/${id}`)
         .then(res => res.json())
         .then(result => {
             setData(result)
@@ -47,7 +46,7 @@ const UpdateBlog = () => {
         };
         // (newReview);
     
-        fetch(`http://localhost:5000/blogs/${data?._id}`, {
+        fetch(`https://master-dental-server-side.vercel.app/blogs/${data?._id}`, {
           method: "PUT",
           headers: {
             "content-type": "application/json",
@@ -56,7 +55,6 @@ const UpdateBlog = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data)
             if (data.modifiedCount) {
               Swal.fire({
                 title: "Success!",

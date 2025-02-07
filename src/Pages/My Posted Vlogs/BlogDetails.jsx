@@ -7,8 +7,6 @@ const BlogDetails = () => {
   const data = useLoaderData();
   const [commentText,setCommentText] = useState("");
   const { user } = useContext(AuthContext);
-  console.log(user);
-  console.log(data);
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
@@ -19,14 +17,13 @@ const BlogDetails = () => {
         user_profile_picture: user?.photoURL,
         comment_text: commentText,
     }
-    fetch("http://localhost:5000/comments", {
+    fetch("https://master-dental-server-side.vercel.app/comments", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(commentsData),
     })
       .then((res) => res.json())
       .then((data) => {
-       console.log(data)
        if(data.insertedId){
         Swal.fire({
             title: "Comment Publish!",
@@ -42,13 +39,13 @@ const BlogDetails = () => {
 
   return (
     <div>
-      <h2 className=" text[32px] md:text-5xl py-16 font-bold text-center bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent">
+      <h2 className=" text-[32px] md:text-5xl py-16 font-bold text-center bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent">
         Blog Details
       </h2>
 
-      <div className="border w-8/12 mx-auto shadow-xl rounded-lg p-5 space-y-7">
+      <div className="border md:w-8/12 mx-auto md:shadow-xl rounded-lg p-5 md:space-y-7">
         <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
-        <h2 className="text-4xl  font-semibold py-10">
+        <h2 className="md:text-4xl text-3xl  font-semibold py-10">
           {data.title}
         </h2>
         {user && 
@@ -66,11 +63,11 @@ const BlogDetails = () => {
           <span className="font-bold">Description:</span>
           <span className="text-wrap">{data.description}</span>
         </div> */}
-        <p className="flex  gap-1 text-[18px] px-7 py-4 border shadow-lg rounded-lg">
-          <span className="font-bold">Description:</span> {data.description}
+        <p className="flex  gap-1 text-sm md:text-[18px] px-7 py-4 border shadow-lg rounded-lg">
+          <p className="font-bold">Description:</p> <p className="text-xs md:text-[16px]">{data.description}</p>
         </p>
         <div></div>
-        <div className="flex justify-between gap-4 items-center">
+        <div className="flex flex-col md:flex-row justify-between gap-4 items-center">
           <p className="text-[18px] w-full px-7 py-4 border shadow-lg rounded-lg">
             <span className="font-bold">Category : </span>
             <span> {data.category}</span>
@@ -80,7 +77,7 @@ const BlogDetails = () => {
             <span> {data.blogDeadline}</span>
           </p>
         </div>
-        <div className="flex gap-4 justify-between items-center">
+        <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
           <p className="text-[18px] w-full px-7 py-4 border shadow-lg rounded-lg">
             <span className="font-bold">User Name : </span>
             <span> {data.hr_name}</span>
@@ -134,7 +131,7 @@ const BlogDetails = () => {
     Cannot comment on your own blog.
   </p>
 ) : (
-  <div className="md:w-8/12 mx-auto">
+  <div className="w-[90%] md:w-8/12 mx-auto">
     <h2 className="text-[32px] md:text-5xl py-16 font-bold text-center bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent">
       Add Comments
     </h2>
@@ -151,12 +148,12 @@ const BlogDetails = () => {
           <span className="font-bold">User Name : </span>
           <span> {user?.displayName}</span>
         </p>
-        <p className="text-[18px] px-7 py-4 border shadow-lg rounded-lg">
+        <p className="md:text-[18px] text-xs px-7 py-4 border shadow-lg rounded-lg">
           <span className="font-bold">Photo URL : </span>
           <span> {user?.photoURL}</span>
         </p>
       </div>
-      <button className="w-full text-center py-4 font-bold bg-blue-500 text-white">
+      <button className="w-full rounded-lg text-center py-4 font-bold bg-blue-500 text-white">
         Submit
       </button>
     </form>

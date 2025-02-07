@@ -8,20 +8,19 @@ import { MdDeleteForever } from "react-icons/md";
 
 const Wishlist = () => {
   const [Wishlist, setWishlist] = useState([]);
-  console.log(Wishlist);
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
 
   const axiosSecure = useAxiosSecure();
   useEffect(() => {
     setLoading(true);
-    // fetch(`http://localhost:5000/myWishlist?email=${user?.email}`)
+    // fetch(`https://master-dental-server-side.vercel.app/myWishlist?email=${user?.email}`)
     //   .then((res) => res.json())
     //   .then((data) => {
     //     setWishlist(data);
     //   });
 
-    //   axios.get(`http://localhost:5000/myWishlist?email=${user?.email}` , {withCredentials: true})
+    //   axios.get(`https://master-dental-server-side.vercel.app/myWishlist?email=${user?.email}` , {withCredentials: true})
     //   .then(res => setWishlist(res.data))
     axiosSecure.get(`/myWishlist?email=${user?.email}`).then((res) => {
       setWishlist(res.data);
@@ -37,7 +36,6 @@ const Wishlist = () => {
     );
   }
   const handleDeleteWishlist = (_id) => {
-    console.log(_id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -47,9 +45,8 @@ const Wishlist = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      console.log(result.user);
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/myWishlist/${_id}`, {
+        fetch(`https://master-dental-server-side.vercel.app/myWishlist/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -70,7 +67,7 @@ const Wishlist = () => {
   return (
     <div>
       <h2 className="mt-36 font-bold text-[32px] lg:text-5xl md:text-4xl text-center">
-        My Wishlist : {Wishlist?.length}
+        My Wishlist 
       </h2>
 
       <div className="overflow-x-auto">
