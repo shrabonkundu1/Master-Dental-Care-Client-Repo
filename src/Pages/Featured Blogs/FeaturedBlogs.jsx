@@ -13,7 +13,7 @@ const FeaturedBlogs = () => {
     },[])
     return (
         <div>
-            <h2  className="text[32px] md:text-5xl my-16 font-bold text-center bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent py-16 " >Top Post Blogs {topBlogs.length}</h2>
+            <h2  className="text[32px] md:text-5xl my-16 font-bold text-center bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent py-16 " >Top Post Blogs {topBlogs.lengtha}</h2>
         </div>
     );
 };

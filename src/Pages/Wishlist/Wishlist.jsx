@@ -2,18 +2,27 @@ import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../Context/AuthContext";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Wishlist = () => {
   const [Wishlist, setWishlist] = useState([]);
   console.log(Wishlist);
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure()
   useEffect(() => {
-    fetch(`http://localhost:5000/myWishlist?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setWishlist(data);
-      });
+    // fetch(`http://localhost:5000/myWishlist?email=${user?.email}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setWishlist(data);
+    //   });
+
+  //   axios.get(`http://localhost:5000/myWishlist?email=${user?.email}` , {withCredentials: true})
+  //   .then(res => setWishlist(res.data))
+  axiosSecure.get(`/myWishlist?email=${user?.email}`)
+  .then(res => setWishlist(res.data))
   }, [user?.email]);
+
 
   const handleDeleteWishlist = (_id) => {
     console.log(_id)
