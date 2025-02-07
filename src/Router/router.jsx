@@ -14,6 +14,7 @@ import BlogDetails from "../Pages/My Posted Vlogs/BlogDetails";
 import FeaturedBlogs from "../Pages/Featured Blogs/FeaturedBlogs";
 import UpdateBlog from "../Pages/Add Vlogs/UpdateBlog";
 import PrivateRoute from "../Router/PrivateRoute";
+import ViewComments from "../Pages/My Posted Vlogs/ViewComments";
 
 
 const router = createBrowserRouter([
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
         {
             path: "/updateBlog/:id",
             element: <PrivateRoute><UpdateBlog></UpdateBlog></PrivateRoute>,
+        },
+        {
+            path: "/viewComment/:blog_id",
+            element: <PrivateRoute><ViewComments></ViewComments></PrivateRoute>,
         },
         {
             path: "/login",

@@ -3,25 +3,37 @@ import RecentBlogCard from "../Home/RecentBlogCard";
 
 const AllVlogs = () => {
   const [blogs, setBlogs] = useState([]);
+  const [loading,setLoading] = useState(false);
+
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   console.log(blogs);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/blogs?category=${category}&search=${search}`)
+    setLoading(true)
+    fetch(`http://localhost:5000/allBlogs?category=${category}&search=${search}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setBlogs(data);
+        setLoading(false)
       });
   }, [search, category]);
+
+  if(loading) {
+    return(
+      <div className='min-h-screen flex justify-center items-center'>
+        <span className="loading loading-ring loading-lg "></span>
+      </div>
+    )
+  }
   return (
     <div className="my-28 min-h-screen w-[90%] mx-auto">
-      <h2 className="text[32px] md:text-5xl my-16 font-bold text-center bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent">
+      <h2 className="text-4xl md:text-5xl py-6 font-bold text-center bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent">
         Recent Blogs {blogs.length}
       </h2>
 
-      <div className="flex gap-4 mb-8 justify-center">
+      <div className="flex flex-col md:flex-row gap-4 mb-8 justify-center">
         <input
           type="text"
           placeholder="Search by title..."
@@ -45,7 +57,7 @@ const AllVlogs = () => {
         </select>
       </div>
 
-      <div className="grid justify-center items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid justify-center items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8">
         {blogs.map((blog) => (
           <RecentBlogCard key={blog._id} blog={blog}></RecentBlogCard>
         ))}

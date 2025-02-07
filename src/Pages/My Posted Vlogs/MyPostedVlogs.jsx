@@ -1,19 +1,37 @@
 import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../Context/AuthContext";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 const MyPostedVlogs = () => {
   const [blogs, setBlogs] = useState([]);
   console.log(blogs);
+  const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
+  const [loading,setLoading] = useState(false);
+
 
   useEffect(() => {
-    fetch(`http://localhost:5000/blogs?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setBlogs(data);
-      });
+    // fetch(`http://localhost:5000/blogs?email=${user?.email}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     setBlogs(data);
+    //   });
+
+  setLoading(true)
+  axiosSecure.get(`blogs?email=${user?.email}`)
+  .then(res => {
+    setBlogs(res.data)
+    setLoading(false)
+  })
   }, [user?.email]);
+  if(loading) {
+    return(
+      <div className='min-h-screen flex justify-center items-center'>
+        <span className="loading loading-ring loading-lg "></span>
+      </div>
+    )
+  }
   return (
     <div>
       <h2 className="mt-36 font-bold text-[32px] lg:text-5xl md:text-4xl text-center"> MyPostedVlogs : {blogs.length}</h2>
@@ -50,11 +68,11 @@ const MyPostedVlogs = () => {
                 <td>{blog.blogDeadline}</td>
                 <td>{blog.applicationCount}</td>
                 <th>
-                  <Link to={`/viewApplication/${blog._id}`}>
+                  <Link to={`/viewComment/${blog._id}`}>
                   <button
                     className="btn btn-ghost btn-xs"
                   >
-                    View Application
+                    View Comment
                   </button>
                   </Link>
                 </th>

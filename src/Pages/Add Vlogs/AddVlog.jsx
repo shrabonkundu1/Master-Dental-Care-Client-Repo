@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import AuthContext from "../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { div } from "framer-motion/client";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const AddVlog = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [loading,setLoading] = useState(false)
+  const axiosSecure = useAxiosSecure();
 
   const handleAddBlog = (e) => {
     e.preventDefault();
@@ -16,27 +17,52 @@ const AddVlog = () => {
     console.log(initialData)
 
     // --------post to server :
-    fetch('http://localhost:5000/blogs',{
-      method: "POST",
-      headers:{
-        "content-type" : "application/json"
+    // fetch('http://localhost:5000/blogs',{
+    //   method: "POST",
+    //   headers:{
+    //     "content-type" : "application/json"
+    //   },
+    //   body: JSON.stringify(initialData)
+    // })
+    // .then(res => res.json())
+    // .then(data => {
+    //   console.log(data)
+    //   if(data.insertedId){
+    //     Swal.fire({
+    //       title: "Blog Added Successfully",
+    //       icon: "success",
+    //       draggable: true
+    //     });
+    //     e.target.reset();
+    //     navigate('/myPostedBlog')
+    //   }
+    // })
+
+    axiosSecure.post("/blogs", initialData, {
+      headers: {
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(initialData)
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      if(data.insertedId){
-        Swal.fire({
-          title: "Blog Added Successfully",
-          icon: "success",
-          draggable: true
-        });
-        e.target.reset();
-        navigate('/myPostedBlog')
-      }
-    })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "Blog Added Successfully",
+            icon: "success",
+            draggable: true,
+          });
+          e.target.reset();
+          navigate("/myPostedBlog");
+        }
+      })
   };
+  if(loading) {
+    return(
+      <div className='min-h-screen flex justify-center items-center'>
+        <span className="loading loading-ring loading-lg "></span>
+      </div>
+    )
+  }
   return (
    <div className=" w-full bg-blue-100 py-10 md:py-16">
      <div className="card bg-blue-50 md:w-3/4 w-[95%] mx-auto my-16  shadow-2xl">

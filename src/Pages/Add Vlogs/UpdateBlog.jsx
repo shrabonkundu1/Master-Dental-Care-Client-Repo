@@ -6,13 +6,17 @@ import Swal from 'sweetalert2';
 
 const UpdateBlog = () => {
     const [data,setData] = useState([]);
+    const [loading,setLoading] = useState(false);
+
     console.log(data)
     const {id} = useParams();
     useEffect(() => {
+      setLoading(true)
         fetch(`http://localhost:5000/blogs/${id}`)
         .then(res => res.json())
         .then(result => {
             setData(result)
+            setLoading(false)
         })
     },[id])
     const {user} = useContext(AuthContext)
@@ -64,6 +68,14 @@ const UpdateBlog = () => {
             }
           });
       };
+
+      if(loading) {
+        return(
+          <div className='min-h-screen flex justify-center items-center'>
+            <span className="loading loading-ring loading-lg "></span>
+          </div>
+        )
+      }
     
     return (
         <div className=" w-full bg-blue-100 py-10 md:py-16">

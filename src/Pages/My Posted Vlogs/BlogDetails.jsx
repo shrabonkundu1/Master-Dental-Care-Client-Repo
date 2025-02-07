@@ -51,7 +51,7 @@ const BlogDetails = () => {
         <h2 className="text-4xl  font-semibold py-10">
           {data.title}
         </h2>
-        {
+        {user && 
           user?.email === data?.hr_email && (
           <Link to={`/updateBlog/${data._id}`}>
              <button  className="bg-green-500 text-white font-bold rounded-lg px-4 py-2 mt-4">

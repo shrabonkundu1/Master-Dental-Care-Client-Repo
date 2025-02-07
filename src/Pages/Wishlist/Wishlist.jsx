@@ -4,28 +4,40 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { MdDeleteForever } from "react-icons/md";
 
 const Wishlist = () => {
   const [Wishlist, setWishlist] = useState([]);
   console.log(Wishlist);
   const { user } = useContext(AuthContext);
-  const axiosSecure = useAxiosSecure()
+  const [loading, setLoading] = useState(false);
+
+  const axiosSecure = useAxiosSecure();
   useEffect(() => {
+    setLoading(true);
     // fetch(`http://localhost:5000/myWishlist?email=${user?.email}`)
     //   .then((res) => res.json())
     //   .then((data) => {
     //     setWishlist(data);
     //   });
 
-  //   axios.get(`http://localhost:5000/myWishlist?email=${user?.email}` , {withCredentials: true})
-  //   .then(res => setWishlist(res.data))
-  axiosSecure.get(`/myWishlist?email=${user?.email}`)
-  .then(res => setWishlist(res.data))
+    //   axios.get(`http://localhost:5000/myWishlist?email=${user?.email}` , {withCredentials: true})
+    //   .then(res => setWishlist(res.data))
+    axiosSecure.get(`/myWishlist?email=${user?.email}`).then((res) => {
+      setWishlist(res.data);
+      setLoading(false);
+    });
   }, [user?.email]);
 
-
+  if (loading) {
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <span className="loading loading-ring loading-lg "></span>
+      </div>
+    );
+  }
   const handleDeleteWishlist = (_id) => {
-    console.log(_id)
+    console.log(_id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -34,9 +46,9 @@ const Wishlist = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then(result => {
-      console.log(result.user)
-      if (result.isConfirmed) { 
+    }).then((result) => {
+      console.log(result.user);
+      if (result.isConfirmed) {
         fetch(`http://localhost:5000/myWishlist/${_id}`, {
           method: "DELETE",
         })
@@ -53,11 +65,13 @@ const Wishlist = () => {
             }
           });
       }
-    })
-  }
+    });
+  };
   return (
     <div>
-      <h2 className="mt-36 font-bold text-[32px] lg:text-5xl md:text-4xl text-center">My Wishlist : {Wishlist?.length}</h2>
+      <h2 className="mt-36 font-bold text-[32px] lg:text-5xl md:text-4xl text-center">
+        My Wishlist : {Wishlist?.length}
+      </h2>
 
       <div className="overflow-x-auto">
         <table className="table my-16 w-[90%] mx-auto">
@@ -86,17 +100,14 @@ const Wishlist = () => {
                 <td>{data.category}</td>
                 <td>{data.deadline}</td>
                 <td>
-                 <div>
-                 <button
-                    onClick={() => handleDeleteWishlist(data._id)}
-                    className="btn btn-ghost btn-xs"
-                  >
-                    X
-                  </button>
-                  <Link to={`/blogs/${data._id}`} className="btn">
-                  Details 
-                  </Link>
-                 </div>
+                  <div>
+                    <button
+                      onClick={() => handleDeleteWishlist(data._id)}
+                      className="btn btn-ghost btn-xs text-red-700 text-2xl"
+                    >
+                      <MdDeleteForever />
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
