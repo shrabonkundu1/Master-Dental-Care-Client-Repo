@@ -167,6 +167,14 @@ const Nav = () => {
                     My Wishlist
                   </Link>
                 </li>
+                <li className="my-1">
+                  <Link
+                    to="/comments/:id"
+                    className={`${getLinkStyle("/comments/:id")} rounded-none`}
+                  >
+                    All Comments
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
