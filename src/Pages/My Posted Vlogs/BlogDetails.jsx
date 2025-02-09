@@ -7,12 +7,14 @@ const BlogDetails = () => {
   const data = useLoaderData();
   const [commentText,setCommentText] = useState("");
   const { user } = useContext(AuthContext);
+  const {id}= useParams();
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
 
   const  commentsData = {
-        blog_id: data._id,
+        blog_id: id,
+        commenter_email : user?.email,
         user_name: user?.displayName,
         user_profile_picture: user?.photoURL,
         comment_text: commentText,

@@ -15,13 +15,14 @@ import FeaturedBlogs from "../Pages/Featured Blogs/FeaturedBlogs";
 import UpdateBlog from "../Pages/Add Vlogs/UpdateBlog";
 import PrivateRoute from "../Router/PrivateRoute";
 import ViewComments from "../Pages/My Posted Vlogs/ViewComments";
+import ErrorPage from "../Pages/Error/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
       path: "",
       element: <MainLayouts></MainLayouts>,
-      errorElement: <h2>Routes not found</h2>,
+      errorElement: <ErrorPage></ErrorPage>,
       children : [
         {
             path: "/",
