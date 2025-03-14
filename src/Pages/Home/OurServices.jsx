@@ -35,7 +35,7 @@ const OurServices = () => {
       </div>
       <div className="flex-1  h-full w-full md:pl-24 space-y-5">
         <h6 className="text-blue-800 mt-5 font-medium">OUR SERVICES</h6>
-        <h2 className="md:text-4xl text-[32px] font-bold text-gray-800">
+        <h2 className="md:text-4xl text-[32px] font-bold text-gray-800 font-Playfair">
           Your Path to a Brighter, <br /> Healthier Smile Starts Here.
         </h2>
         <p className="md:mr-16 font-medium">

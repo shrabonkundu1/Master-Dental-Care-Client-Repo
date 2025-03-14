@@ -48,7 +48,7 @@ const Banner = () => {
                   initial={{ y: 170, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 1.3, delay: 0, ease: easeInOut }}
-                  className="md:text-5xl sm:text-4xl text-[30px] lg:text-5xl font-bold  leading-10"
+                  className="md:text-5xl sm:text-4xl text-[30px] lg:text-5xl font-bold font-Playfair  leading-10"
                 >
                   Transform
                   <span className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent mx-5 ">
@@ -118,7 +118,7 @@ const Banner = () => {
                       initial={{ y: 170, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ duration: 1.3, delay: 3.5, ease: easeInOut }}
-                      className="md:text-5xl sm:text-4xl text-[32px] text-white lg:text-5xl font-bold  leading-10"
+                      className="md:text-5xl sm:text-4xl text-[32px] text-white lg:text-5xl font-bold font-Playfair leading-10"
                     >
                      <span className="mb-10 bg-gradient-to-r from-blue-200 to-blue-50 bg-clip-text text-transparent "> <span>Transform</span>
                       <span className="bg-gradient-to-r from-blue-300 to-blue-100 bg-clip-text text-transparent md:mx-5 ">
@@ -162,7 +162,7 @@ const Banner = () => {
                       initial={{ y: 170, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ duration: 1.3, delay: 6.7, ease: easeInOut }}
-                      className="md:text-5xl sm:text-4xl text-left text-[32px] text-white lg:text-5xl font-bold  leading-10"
+                      className="md:text-5xl sm:text-4xl text-left text-[32px] text-white lg:text-5xl font-bold font-dancing leading-10"
                     >
                      <span className="mb-10 bg-gradient-to-r from-blue-200 to-blue-50 bg-clip-text text-transparent "> Transform
                       <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mx-5 ">

@@ -27,7 +27,7 @@ const AllVlogs = () => {
   }
   return (
     <div className="my-28 min-h-screen w-[90%] mx-auto">
-      <h2 className="text-4xl md:text-5xl py-6 font-bold text-center bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent">
+      <h2 className="text-4xl md:text-5xl py-6 font-bold text-center bg-gradient-to-r from-blue-700 font-Playfair to-blue-400 bg-clip-text text-transparent">
         All Blogs 
       </h2>
 

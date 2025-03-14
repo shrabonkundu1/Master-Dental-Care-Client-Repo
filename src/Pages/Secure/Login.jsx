@@ -144,7 +144,7 @@ const Login = () => {
           <title>Asthetic Gamer || Login</title>
         </Helmet> */}
         <form onSubmit={handleLogIn} className="card-body">
-          <h1 className="text-5xl font-bold  mb-10">Login now!</h1>
+          <h1 className="text-5xl font-bold font-Playfair mb-10">Login now!</h1>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>

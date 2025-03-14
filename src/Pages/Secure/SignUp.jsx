@@ -103,7 +103,7 @@ const SignUp = () => {
         </Helmet> */}
       <div className="card bg-base-100 w-full max-w-lg mx-auto mt-20 shrink-0 shadow-2xl shadow-blue-400 mb-24">
         <form onSubmit={handleSignUp} className="card-body w-full mx-auto my-6">
-          <h1 className="text-5xl font-bold mb-10">Sign Up now!</h1>
+          <h1 className="text-5xl font-bold font-Playfair mb-10">Sign Up now!</h1>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Name</span>

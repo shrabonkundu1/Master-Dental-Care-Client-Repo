@@ -32,7 +32,7 @@ const MyPostedVlogs = () => {
   }
   return (
     <div>
-      <h2 className="mt-36 font-bold text-[32px] lg:text-5xl md:text-4xl text-center"> MyPostedVlogs</h2>
+      <h2 className="mt-36 font-bold text-[32px] lg:text-5xl md:text-4xl text-center font-Playfair"> My Posted Vlogs</h2>
 
    
 

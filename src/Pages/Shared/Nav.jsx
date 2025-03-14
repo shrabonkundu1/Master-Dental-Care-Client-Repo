@@ -76,7 +76,7 @@ const Nav = () => {
                 src={logo}
                 alt="Logo"
               />
-              <span className="text-3xl sm:text-3xl md:text-3xl lg:text-3xl text-md font-bold  bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent">
+              <span className="text-3xl sm:text-3xl md:text-3xl lg:text-3xl text-md font-extrabold  bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent font-dancing">
                 Dental Care
               </span>
             </Link>
