@@ -42,7 +42,7 @@ const Banner = () => {
       <div>
         <Slider className="w-full mx-auto " {...settings}>
           <div>
-            <div className="grid justify-center md:w-[85%] mx-auto grid-cols-1 md:grid-cols-2 border-0 items-center  min-h-[550px]  md:gap-28  p-5 rounded-lg ">
+            <div className="grid justify-center md:w-[85%] mx-auto grid-cols-1 md:grid-cols-2 border-0 items-center  md:min-h-[550px] min-h-[550px]  md:gap-28  p-5 rounded-lg ">
               <div className="md:space-y-8 space-y-4">
                 <motion.h2
                   initial={{ y: 170, opacity: 0 }}
@@ -105,7 +105,7 @@ const Banner = () => {
           <div>
             <div className="flex items-center  gap-3   rounded-lg ">
               <div
-                className="hero md:min-h-[550px] min-h-[700px] w-full"
+                className="hero min-h-[550px]  w-full"
                 style={{
                   backgroundImage:
                     "url(https://i.ibb.co.com/bR51GFJ3/beauty-canal-assistant-background-care.jpg)",
@@ -149,7 +149,7 @@ const Banner = () => {
           <div>
             <div className="flex items-center  gap-3   rounded-lg ">
               <div
-                className="hero md:min-h-[550px] min-h-[700px] w-full"
+                className="hero min-h-[550px]  w-full"
                 style={{
                   backgroundImage:
                     "url(https://i.ibb.co.com/FkfQHS4W/half-face-portrait-smiling-woman.jpg)",
