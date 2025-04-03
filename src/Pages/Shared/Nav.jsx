@@ -102,15 +102,15 @@ const Nav = () => {
               className={getLinkStyle("/allBlog")}
               onClick={() => setActiveLink("/allBlog")}
             >
-              <VscOpenPreview className="lg:inline-block mr-1" /> All Blog
+              <VscOpenPreview className="lg:inline-block mr-1" /> All Treatment
             </Link>
-            {/* <Link
-              to="/featuredBlogs"
-              className={getLinkStyle("/featuredBlogs")}
-              onClick={() => setActiveLink("/featuredBlogs")}
+            <Link
+              to="/services"
+              className={getLinkStyle("/services")}
+              onClick={() => setActiveLink("/services")}
             >
-              <VscOpenPreview className="lg:inline-block mr-1" /> Featured Blogs
-            </Link> */}
+              <VscOpenPreview className="lg:inline-block mr-1" /> Our Services
+            </Link>
 
             <div
               className={`dropdown dropdown-bottom ${

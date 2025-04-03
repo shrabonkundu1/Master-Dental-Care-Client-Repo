@@ -17,6 +17,7 @@ import PrivateRoute from "../Router/PrivateRoute";
 import ViewComments from "../Pages/My Posted Vlogs/ViewComments";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import CommentsPage from "../Pages/Comments/CommentsPage";
+import Services from "../Pages/Services/Services";
 
 
 const router = createBrowserRouter([
@@ -38,9 +39,9 @@ const router = createBrowserRouter([
             element: <PrivateRoute><AddVlog></AddVlog></PrivateRoute>,
         },
         {
-            path: "/featuredBlogs",
-            element: <FeaturedBlogs></FeaturedBlogs>,
-        },
+            path: "/services",
+            element: <Services></Services>,
+        },            
         {
             path: "/myPostedBlog",
             element: <PrivateRoute><MyPostedVlogs></MyPostedVlogs></PrivateRoute>,

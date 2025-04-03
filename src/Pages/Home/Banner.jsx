@@ -8,6 +8,7 @@ import banner2 from "../../assets/banner2.jpg";
 import banner5 from "../../assets/banner5.jpg";
 import { motion } from "motion/react";
 import { easeInOut } from "motion";
+import { Link, Links } from "react-router-dom";
 
 const Banner = () => {
   const settings = {
@@ -135,11 +136,13 @@ const Banner = () => {
                       professionals. Your journey to a perfect smile begins with
                       just one click.
                     </motion.p>
-                    <motion.button 
+                  <Link to={'/services'}>
+                  <motion.button 
                      animate={{ y: [80, 0] }}
                      transition={{ duration: 1.4, delay: 3.5, ease: easeInOut }} className="px-12 rounded-full hover:bg-gradient-to-r  hover:from-blue-200 hover:to-blue-50 hover:text-blue-600 text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  border py-4">
                   View Services
                   </motion.button>
+                  </Link>
                   </div>
                 </div>
               </div>
@@ -179,11 +182,13 @@ const Banner = () => {
                       professionals. Your journey to a perfect smile begins with
                       just one click.
                     </motion.p>
-                    <motion.button 
+                    <Link to={'/services'}>
+                  <motion.button 
                      animate={{ y: [80, 0] }}
-                     transition={{ duration: 1.4, delay: 6.7, ease: easeInOut }} className="px-12 rounded-full hover:bg-gradient-to-r  hover:from-blue-200 hover:to-blue-50 hover:text-blue-600 text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  border py-4">
+                     transition={{ duration: 1.4, delay: 3.5, ease: easeInOut }} className="px-12 rounded-full hover:bg-gradient-to-r  hover:from-blue-200 hover:to-blue-50 hover:text-blue-600 text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  border py-4">
                   View Services
                   </motion.button>
+                  </Link>
                   </div>
                 </div>
               </div>
