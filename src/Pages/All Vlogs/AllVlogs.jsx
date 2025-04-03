@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RecentBlogCard from "../Home/RecentBlogCard";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const AllVlogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -9,6 +11,14 @@ const AllVlogs = () => {
   const [category, setCategory] = useState("");
 
   useEffect(() => {
+    AOS.init({
+      duration: 1500, 
+      easing: "ease-out-quart", 
+      // easing: "ease-in-out"
+    });
+  }, []);
+  useEffect(() => {
+    setLoading(true)
     fetch(`https://master-dental-server-side.vercel.app/allBlogs?category=${category}&search=${search}`)
     .then((res) => res.json())
     .then((data) => {
@@ -57,7 +67,7 @@ const AllVlogs = () => {
 
       <div className="grid justify-center items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogs.map((blog) => (
-          <RecentBlogCard key={blog._id} blog={blog}></RecentBlogCard>
+          <RecentBlogCard key={blog._id} data-aos="fade-up"  blog={blog}></RecentBlogCard>
         ))}
       </div>
     </div>

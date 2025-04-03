@@ -40,3 +40,16 @@
   padding-left: 15px;
   padding-right: 15px;
 }
+
+#bgImage {
+  background-image: url('https://jamstackvietnam.com/images/dowsil/project-dowsil-1.webp');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#bgImage2 {
+  background-image: url('https://img.freepik.com/free-photo/vivid-blurred-colorful-wallpaper-background_58702-3917.jpg?ga=GA1.1.1297663025.1739736081&semt=ais_hybrid&w=740');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}

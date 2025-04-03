@@ -1,7 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import AuthContext from "../../Context/AuthContext";
 import Swal from "sweetalert2";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const RecentBlogCard = ({ blog }) => {
   const { _id,title, blog_url, category, blogDeadline } = blog;
@@ -40,9 +42,15 @@ const {id} = useParams()
         
   })  }
 
- 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, 
+      easing: "ease-out-quart", 
+      // easing: "ease-in-out"
+    });
+  }, []);
   return (
-    <div>
+    <div data-aos="fade-up">
       <div className="card card-compact rounded-md group  px-1 py-2 border border-[#a0d6f3] bg-[#f3f7fd] hover:bg-white duration-1800 transition  hover:translate-y-[-4px]">
         <figure>
           <img
@@ -55,7 +63,7 @@ const {id} = useParams()
           <h2 className="card-title font-bold">{title}</h2>
           <p><span className="font-medium">Category:</span> {category}</p>
           <p><span className="font-medium">Deadline:</span> {blogDeadline}</p>
-          <div className="card-actions flex gap-4 justify-end">
+          <div className="card-actions flex gap-3 justify-end">
            <Link to={`/blogs/${_id}`}> <button className="w-max py-3 px-10 md:px-16 border rounded-full  text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  translate-2 transition-transform  font-bold hover:scale-105">Details</button></Link>
             <button onClick={handleAddToWishlist} className="w-max py-3 border rounded-full  text-slate-50 bg-gradient-to-r  from-blue-400 to-blue-700  translate-2 transition-transform  font-bold hover:scale-105 px-10 md:px-16">Wishlist</button>
           </div>

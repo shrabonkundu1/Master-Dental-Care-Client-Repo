@@ -22,7 +22,7 @@ const Home = () => {
             <Testimonials></Testimonials>
             {/* <Testimonialas></Testimonialas> */}
         </div>
-        <div className='bg-blue-100 h-full w-full'>
+        <div id='bgImage2' className=' h-full w-full'>
             <Newsletter></Newsletter>
         </div>
        </div>

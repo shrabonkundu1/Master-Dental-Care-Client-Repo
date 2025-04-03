@@ -6,10 +6,10 @@ import { Cursor, Typewriter } from "react-simple-typewriter";
 
 const Footer = () => {
   return (
-    <div className="   pt-16">
+    <div id="" className="bg-[#1b898b]   pt-16">
       <h2 className="flex text-3xl items-center ml-2 md:ml-0 md:justify-center  gap-5 font-semibold  mx-auto">
         {/* <img className="h-16 w-16 rounded-xl" src={logo} alt="" /> */}
-        <p className="text-4xl font-bold md:text-5xl text-red-100 bg-gradient-to-r from-blue-600 to-blue-300 bg-clip-text text-transparent font-dancing">
+        <p className="text-4xl font-bold md:text-5xl text-red-100 bg-gradient-to-r from-[#f4f6f3] to-blue-300 bg-clip-text text-transparent font-dancing">
           <span className="">
             <Typewriter
               words={[" Master Dental Care"]}
@@ -23,13 +23,13 @@ const Footer = () => {
           </span>
         </p>
       </h2>
-      <p className="md:text-center text-[#2b2c2e]  w-[95%] md:w-3/5 mx-auto my-5 ">
+      <p className="md:text-center text-[#e2f6f3]  w-[95%] md:w-3/5 mx-auto my-5 ">
         Save more with ease! Collect exclusive coupons, enjoy amazing discounts,
         and make every purchase rewarding. Stay connected with us for updates
         and offers tailored just for you.
       </p>
 
-      <footer className="md:flex justify-between items-center py-10 md:py-0 px-2 md:px-10  md:p-10 md:w-[90%] mx-auto text-[#363739]">
+      <footer className="md:flex justify-between items-center py-10 md:py-0 px-2 md:px-10  md:p-10 md:w-[90%] mx-auto text-[#e2f6f3]">
         <nav className="flex flex-col mb-10 md:mb-0 ">
           <h6 className="text-2xl font-medium">Quick Links</h6>
           <p className="">Book Appointment</p>
@@ -66,7 +66,7 @@ const Footer = () => {
       </div>
       <footer className="footer footer-center  text-base-content p-4">
         <aside>
-          <p className="w-[70%] md:w-full text-[#45474a] font-medium text-center">
+          <p className="w-[70%] md:w-full text-[#e2f6f3] font-medium text-center">
             Copyright © {new Date().getFullYear()} - All right reserved by
             Master Dental Care Team.
           </p>

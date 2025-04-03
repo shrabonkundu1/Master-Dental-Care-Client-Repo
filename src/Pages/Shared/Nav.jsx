@@ -104,13 +104,13 @@ const Nav = () => {
             >
               <VscOpenPreview className="lg:inline-block mr-1" /> All Blog
             </Link>
-            <Link
+            {/* <Link
               to="/featuredBlogs"
               className={getLinkStyle("/featuredBlogs")}
               onClick={() => setActiveLink("/featuredBlogs")}
             >
               <VscOpenPreview className="lg:inline-block mr-1" /> Featured Blogs
-            </Link>
+            </Link> */}
 
             <div
               className={`dropdown dropdown-bottom ${
