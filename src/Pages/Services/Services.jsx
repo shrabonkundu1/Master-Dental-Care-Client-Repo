@@ -3,11 +3,11 @@ import React from 'react';
 const Services = () => {
     return (
         <div className="py-10">
-          <div className="text-center space-y-4">
-            <h3 className="text-6xl font-semibold font-[Playfair Display]">
-              Out Services
+          <div className="text-center space-y-4 pt-10">
+            <h3 className="text-6xl font-semibold font-Playfair text-[#3d78e8]">
+              Our Services
             </h3>
-            <p className="md:px-48 text-[18px]">
+            <p className="md:px-48 text-[18px] font-Playfair">
               Your Trusted Partner for Premium Dental Solutions - Providing
               high-quality dental equipment, tools, and supplies to support
               professionals with reliable products, fast delivery, and seamless
@@ -22,7 +22,7 @@ const Services = () => {
                         <img className='w-[420px] rounded-xl object-cover h-[310px]' src="https://www.avfdentalgroup.com/assets/img/blog/zirconia-dental-crown-benefits-min.jpg" alt="" />
                     </div>
                 </div> */}
-         <div className="md:w-[80%] w-[95%] mx-auto grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-12">
+         <div className="md:w-[80%] w-[95%] mx-auto grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-12 font-dancing pb-24">
          <div className="relative group my-20">
             <div className="bg-blue-50 w-[420px] rounded-md h-[300px] group-hover:bg-[#2d83c2] transition-colors duration-300">
               <h2 className="text-4xl font-semibold p-6 text-black group-hover:text-white transition-colors duration-300">

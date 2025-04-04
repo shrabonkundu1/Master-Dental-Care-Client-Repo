@@ -72,12 +72,14 @@ const Banner = () => {
                   <motion.button animate={{ y: [80, 0] }}
                      transition={{ duration: 1.4, delay: 0, ease: easeInOut }}
                       className="md:px-7 px-4 rounded-full text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  border py-2 md:py-4">
-                    Book Appointment
+                    Booked Appointment
                   </motion.button>
+                  <Link to={'/allBlog'}>
                   <motion.button animate={{ y: [80, 0] }}
                      transition={{ duration: 1.4, delay: 0, ease: easeInOut }} className="md:px-7 px-4  rounded-full text-blue-500 border-blue-600 border-2  py-2 md:py-4">
                     view Treatments
                   </motion.button>
+                  </Link>
                 </motion.div>
               </div>
               <div className=" flex relative ">
@@ -139,7 +141,7 @@ const Banner = () => {
                   <Link to={'/services'}>
                   <motion.button 
                      animate={{ y: [80, 0] }}
-                     transition={{ duration: 1.4, delay: 3.5, ease: easeInOut }} className="px-12 rounded-full hover:bg-gradient-to-r  hover:from-blue-200 hover:to-blue-50 hover:text-blue-600 text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  border py-4">
+                     transition={{ duration: 1.4, delay: 3.5, ease: easeInOut }} className="px-12 mt-5 rounded-full hover:bg-gradient-to-r  hover:from-blue-200 hover:to-blue-50 hover:text-blue-600 text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  border py-4">
                   View Services
                   </motion.button>
                   </Link>
@@ -185,7 +187,7 @@ const Banner = () => {
                     <Link to={'/services'}>
                   <motion.button 
                      animate={{ y: [80, 0] }}
-                     transition={{ duration: 1.4, delay: 3.5, ease: easeInOut }} className="px-12 rounded-full hover:bg-gradient-to-r  hover:from-blue-200 hover:to-blue-50 hover:text-blue-600 text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  border py-4">
+                     transition={{ duration: 1.4, delay: 3.5, ease: easeInOut }} className="px-12 mt-5 rounded-full hover:bg-gradient-to-r  hover:from-blue-200 hover:to-blue-50 hover:text-blue-600 text-slate-50 bg-gradient-to-r  from-blue-600 to-blue-400  border py-4">
                   View Services
                   </motion.button>
                   </Link>

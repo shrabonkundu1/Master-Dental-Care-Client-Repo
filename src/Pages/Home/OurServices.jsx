@@ -2,6 +2,7 @@ import React from "react";
 import OurService from "../../assets/youre-as-fit-as-a-fiddle-shot-of-a-dentist-and-a-patient-using-a-tablet-in-a-office--1536x1025.jpg";
 import OurService2 from "../../assets/teeth.jpg";
 import { BsArrowUpRightCircleFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 const OurServices = () => {
   return (
     <div className="flex  md:flex-row w-full rounded-lg md:h-[500px] justify-center items-center gap-24 md:gap-16 flex-col-reverse  mt-24 md:mt-36 mb-24">
@@ -69,9 +70,11 @@ const OurServices = () => {
             <span className="font-semibold">Guaranteed Satisfaction</span>
           </button>
         </div>
-        <button className="bg-gradient-to-r from-blue-600 to-blue-200 px-10 py-3 rounded-full text-white">
+        <Link to={'/services'}>
+        <button className="bg-gradient-to-r from-blue-600 mt-5 to-blue-200 px-10 py-3 rounded-full text-white">
           Learn More
         </button>
+        </Link>
       </div>
     </div>
   );

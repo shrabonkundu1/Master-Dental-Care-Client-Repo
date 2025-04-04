@@ -9,7 +9,7 @@ import { VscOpenPreview } from "react-icons/vsc";
 // import { useFirebaseAuth } from "../hooks/useAuth";
 import { RiUserReceivedLine } from "react-icons/ri";
 import { FaRegSave } from "react-icons/fa";
-import logo from "../../assets/logo.png";
+// import logo from "../../assets/logo.png";
 import AuthContext from "../../Context/AuthContext";
 import { CgLogIn } from "react-icons/cg";
 import { TbLogout2 } from "react-icons/tb";
@@ -73,7 +73,7 @@ const Nav = () => {
             <Link to="/" className="flex items-center  space-x-1">
               <img
                 className="block md:hidden lg:block   w-14 h-14 bg-transparent"
-                src={logo}
+                src='https://i.ibb.co.com/LdxqkMZf/Chat-GPT-Image-Apr-4-2025-03-47-57-PM-removebg-preview.png'
                 alt="Logo"
               />
               <span className="text-3xl sm:text-3xl md:text-3xl lg:text-3xl text-md font-extrabold  bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent font-dancing">
@@ -110,6 +110,13 @@ const Nav = () => {
               onClick={() => setActiveLink("/services")}
             >
               <VscOpenPreview className="lg:inline-block mr-1" /> Our Services
+            </Link>
+            <Link
+              to="/aboutUs"
+              className={getLinkStyle("/aboutUs")}
+              onClick={() => setActiveLink("/aboutUs")}
+            >
+              <VscOpenPreview className="lg:inline-block mr-1" /> About Us
             </Link>
 
             <div

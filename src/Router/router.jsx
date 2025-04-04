@@ -18,6 +18,8 @@ import ViewComments from "../Pages/My Posted Vlogs/ViewComments";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import CommentsPage from "../Pages/Comments/CommentsPage";
 import Services from "../Pages/Services/Services";
+import AboutUs from "../Pages/About/AboutUs";
+import About from "../Pages/About/About";
 
 
 const router = createBrowserRouter([
@@ -41,6 +43,10 @@ const router = createBrowserRouter([
         {
             path: "/services",
             element: <Services></Services>,
+        },            
+        {
+            path: "/aboutUs",
+            element: <About></About>
         },            
         {
             path: "/myPostedBlog",
