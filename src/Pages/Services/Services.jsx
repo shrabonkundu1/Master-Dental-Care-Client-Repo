@@ -1,9 +1,18 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
+import AOS from "aos";
+import "aos/dist/aos.css";
 const Services = () => {
+  
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, 
+      easing: "ease-out-quart", 
+      // easing: "ease-in-out"
+    });
+  }, []);
     return (
-        <div className="py-10">
-          <div className="text-center space-y-4 pt-10">
+        <div className="py-10"  >
+          <div data-aos="zoom-in" data-aos-duration="1000" className="text-center space-y-4 pt-10">
             <h3 className="text-6xl font-semibold font-Playfair text-[#3d78e8]">
               Our Services
             </h3>
@@ -22,8 +31,8 @@ const Services = () => {
                         <img className='w-[420px] rounded-xl object-cover h-[310px]' src="https://www.avfdentalgroup.com/assets/img/blog/zirconia-dental-crown-benefits-min.jpg" alt="" />
                     </div>
                 </div> */}
-         <div className="md:w-[80%] w-[95%] mx-auto grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-12 font-dancing pb-24">
-         <div className="relative group my-20">
+         <div  className="md:w-[80%] w-[95%] mx-auto grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-12 font-dancing pb-24">
+         <div data-aos="fade-up" data-aos-duration="1500" className="relative group my-20">
             <div className="bg-blue-50 w-[420px] rounded-md h-[300px] group-hover:bg-[#2d83c2] transition-colors duration-300">
               <h2 className="text-4xl font-semibold p-6 text-black group-hover:text-white transition-colors duration-300">
                 Zirconia Crown
@@ -37,7 +46,7 @@ const Services = () => {
               />
             </div>
           </div>
-          <div className="relative group my-20">
+          <div data-aos="fade-up" data-aos-duration="1500" className="relative group my-20">
             <div className="bg-blue-50 w-[420px] rounded-md h-[300px] group-hover:bg-[#2d83c2] transition-colors duration-300">
               <h2 className="text-4xl font-semibold p-6 text-black group-hover:text-white transition-colors duration-300">
                 Dental Crown
@@ -51,7 +60,7 @@ const Services = () => {
               />
             </div>
           </div>
-          <div className="relative group my-20">
+          <div data-aos="fade-up" className="relative group my-20">
             <div className="bg-blue-50 w-[420px] rounded-md h-[300px] group-hover:bg-[#2d83c2] transition-colors duration-300">
               <h2 className="text-4xl font-semibold p-6 w-[110%] text-black group-hover:text-white transition-colors duration-300">
               Cast Partial frame work
@@ -65,7 +74,7 @@ const Services = () => {
               />
             </div>
           </div>
-          <div className="relative group my-20">
+          <div data-aos="fade-up" className="relative group my-20">
             <div className="bg-blue-50 w-[420px] rounded-md h-[300px] group-hover:bg-[#2d83c2] transition-colors duration-300">
               <h2 className="text-4xl font-semibold p-6 text-black group-hover:text-white transition-colors duration-300">
               Temporary Implant...
@@ -79,7 +88,7 @@ const Services = () => {
               />
             </div>
           </div>
-          <div className="relative group my-20">
+          <div data-aos="fade-up" className="relative group my-20">
             <div className="bg-blue-50 w-[420px] rounded-md h-[300px] group-hover:bg-[#2d83c2] transition-colors duration-300">
               <h2 className="text-4xl font-semibold p-6 text-black group-hover:text-white transition-colors duration-300">
               Cad PFM
@@ -93,7 +102,7 @@ const Services = () => {
               />
             </div>
           </div>
-          <div className="relative group my-20">
+          <div data-aos="fade-up" className="relative group my-20">
             <div className="bg-blue-50 w-[420px] rounded-md h-[300px] group-hover:bg-[#2d83c2] transition-colors duration-300">
               <h2 className="text-4xl font-semibold p-6 text-black group-hover:text-white transition-colors duration-300">
               Only 3d printed...
@@ -107,7 +116,7 @@ const Services = () => {
               />
             </div>
           </div>
-          <div className="relative group my-20">
+          <div data-aos="fade-up" className="relative group my-20">
             <div className="bg-blue-50 w-[420px] rounded-md h-[300px] group-hover:bg-[#2d83c2] transition-colors duration-300">
               <h2 className="text-4xl font-semibold p-6 text-black group-hover:text-white transition-colors duration-300">
               Dental Inlay

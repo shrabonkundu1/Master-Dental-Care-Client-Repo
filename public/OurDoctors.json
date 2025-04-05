@@ -1,0 +1,37 @@
+
+
+  [
+    {
+      "drImg":  "https://i.ibb.co.com/BVmFd10c/IMG-20250406-023851.jpg",
+       "drName": "Dr. Amrito Mondal ",
+      "description": "Dentistry blends science and art to improve smiles and lives. It’s a career of precision, care, and personal impact—making people healthier and more confident every day.",
+      "long_description": "Dr. Alex Thompson has over 15 years of experience in restorative dentistry. He is known for his gentle approach, attention to detail, and dedication to continuing education.",
+      "short_description": "Expert in restorative and cosmetic dentistry with 15+ years of experience.",
+      "eduImg": "https://example.com/images/harvard-dental-school.png",
+      "icon1": "https://example.com/icons/experience.png",
+      "icon1Name": "15+ Years Experience",
+      "icon2": "https://example.com/icons/award.png",
+      "icon2Name": "Best Dentist 2022",
+      "icon3": "https://example.com/icons/patient.png",
+      "icon3Name": "5000+ Happy Patients",
+      "icon4": "https://example.com/icons/education.png",
+      "icon4Name": "Harvard Dental School"
+    },
+    {
+      "drImg": "https://i.ibb.co.com/9mQqDVnZ/FB-IMG-1743885449167.jpg",
+      "drName": "Dr. Ritu Rani Kundu",
+      "description": "Choosing dentistry means choosing to heal, to create confidence, and to build long-term patient relationships while combining medical skill with hands-on creativity.",
+      "long_description": "Dr. Lisa Carter specializes in pediatric dentistry. Her friendly nature and playful clinic environment help children feel safe and relaxed during treatment.",
+      "short_description": "Pediatric dentist making kids smile with care and compassion.",
+      "eduImg": "https://example.com/images/nyu-dental-school.png",
+      "icon1": "https://example.com/icons/kids.png",
+      "icon1Name": "Pediatric Specialist",
+      "icon2": "https://example.com/icons/smile.png",
+      "icon2Name": "Child-Friendly Approach",
+      "icon3": "https://example.com/icons/review.png",
+      "icon3Name": "Top Rated by Parents",
+      "icon4": "https://example.com/icons/education.png",
+      "icon4Name": "NYU College of Dentistry"
+    }
+  ]
+  

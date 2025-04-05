@@ -1,12 +1,13 @@
 import React from 'react';
 import AboutUs from './AboutUs';
+import OurDoctors from './OurDoctors';
 
 const About = () => {
     return (
         <div>
             <div className='banner'>
                 <div>
-                <img className='h-screen w-full object-cover ' src="https://i.ibb.co.com/4n2kvChN/Whats-App-Image-2025-03-30-at-13-58-46-737fe021.jpg" alt="" />
+                <img className='h-[600px] w-full object-cover ' src="https://i.ibb.co.com/7JkhZN6t/FB-IMG-1743885449167.jpg" alt="" />
                 </div>
                 <div>
                     
@@ -14,6 +15,9 @@ const About = () => {
             </div>
             <div>
                 <AboutUs></AboutUs>
+            </div>
+            <div>
+                <OurDoctors></OurDoctors>
             </div>
         </div>
     );
